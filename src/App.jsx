@@ -56,7 +56,19 @@ const App = () => {
           <div className="profile-photo float-animation">
             <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
           </div>
-          <h1 className="hero-title">Sreesh K Suresh</h1>
+          <h1 className="hero-title">
+            {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
+              <span 
+                key={index} 
+                style={{ 
+                  animationDelay: `${index * 0.05}s`,
+                  marginRight: letter === ' ' ? '0.3em' : '0'
+                }}
+              >
+                {letter}
+              </span>
+            ))}
+          </h1>
           <h2 className="hero-subtitle">Data Science Student & Flutter Developer</h2>
           <div className="hero-buttons">
             <a href="#contact" className="btn-premium">Get in Touch</a>
@@ -185,7 +197,7 @@ const App = () => {
                 <h3>2nd Prize - TechPlus Hackathon</h3>
                 <p>Best Idea Ignator</p>
                 <div className="award-image">
-                  <img src="/techplus-award.jpg" alt="TechPlus Hackathon Award" />
+                  <img src="/src/assets/tech.jpeg" alt="TechPlus Hackathon Award" />
                 </div>
               </div>
             </div>
@@ -194,7 +206,7 @@ const App = () => {
                 <h3>3rd Prize - HakeFX Hackathon</h3>
                 <p>Innovation in Technology</p>
                 <div className="award-image">
-                  <img src="/hakefx-award.jpg" alt="HakeFX Hackathon Award" />
+                  <img src="/src/assets/hackefx.jpeg" alt="HakeFX Hackathon Award" />
                 </div>
               </div>
             </div>
