@@ -31,6 +31,13 @@ const App = () => {
 
   return (
     <div className="app">
+      {/* Floating Particles */}
+      <div className="particles">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="particle" />
+        ))}
+      </div>
+
       {/* Navigation */}
       <nav className="glass-effect fixed-top">
         <div className="nav-content">
