@@ -7,6 +7,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +28,14 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionId);
+    }
+  };
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -38,6 +47,17 @@ const App = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : 'auto';
+  };
+
+  const handleNavClick = (sectionId) => {
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
+    document.body.style.overflow = 'auto';
+  };
 
   if (isLoading) {
     return <LoadingScreen onLoaded={() => setIsLoading(false)} />;
@@ -69,15 +89,86 @@ const App = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="glass-effect fixed-top">
-        <div className="nav-content">
-          <a href="#home" className={activeSection === 'home' ? 'active' : ''}>Home</a>
-          <a href="#about" className={activeSection === 'about' ? 'active' : ''}>About</a>
-          <a href="#experience" className={activeSection === 'experience' ? 'active' : ''}>Experience</a>
-          <a href="#skills" className={activeSection === 'skills' ? 'active' : ''}>Skills</a>
-          <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>Projects</a>
-          <a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
+      <nav className="nav-content">
+        <button 
+          className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+          <a 
+            href="#home" 
+            className={activeSection === 'home' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('home');
+            }}
+          >
+            Home
+          </a>
+          <a 
+            href="#about" 
+            className={activeSection === 'about' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('about');
+            }}
+          >
+            About
+          </a>
+          <a 
+            href="#experience" 
+            className={activeSection === 'experience' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('experience');
+            }}
+          >
+            Experience
+          </a>
+          <a 
+            href="#skills" 
+            className={activeSection === 'skills' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('skills');
+            }}
+          >
+            Skills
+          </a>
+          <a 
+            href="#projects" 
+            className={activeSection === 'projects' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('projects');
+            }}
+          >
+            Projects
+          </a>
+          <a 
+            href="#contact" 
+            className={activeSection === 'contact' ? 'active' : ''}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('contact');
+            }}
+          >
+            Contact
+          </a>
         </div>
+        
+        {isMobileMenuOpen && (
+          <div 
+            className="nav-overlay active"
+            onClick={toggleMobileMenu}
+          />
+        )}
       </nav>
 
       {/* Hero Section */}
