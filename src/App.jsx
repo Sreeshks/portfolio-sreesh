@@ -200,7 +200,7 @@ const App = () => {
                     <span className="code-keyword">const</span>
                     <span className="code-variable"> AboutMe</span>
                     <span className="code-operator"> = </span>
-                    <span className="code-keyword">() => </span>
+                    <span className="code-keyword">{`() => `}</span>
                     <span className="code-operator">{'{'}</span>
                     <br />
                     <span className="code-return">  return (</span>
