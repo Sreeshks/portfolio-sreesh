@@ -174,32 +174,61 @@ const App = () => {
       {/* Hero Section */}
       <section id="home" className="hero-section">
         <div className="hero-content">
-          <div className="profile-photo float-animation">
-            <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
+          <div className="hero-flex-container">
+            <div className="profile-section">
+              <div className="profile-photo float-animation">
+                <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
+              </div>
+            </div>
+            <div className="code-editor-container">
+              <div className="editor-header">
+                <div className="window-controls">
+                  <span className="control close"></span>
+                  <span className="control minimize"></span>
+                  <span className="control maximize"></span>
+                </div>
+                <div className="tab">about.tsx</div>
+              </div>
+              <div className="editor-content">
+                <div className="line-numbers">
+                  {Array.from({ length: 6 }, (_, i) => (
+                    <span key={i}>{i + 1}</span>
+                  ))}
+                </div>
+                <div className="code-content">
+                  <div className="typing-effect">
+                    <span className="code-keyword">const</span>
+                    <span className="code-variable"> AboutMe</span>
+                    <span className="code-operator"> = </span>
+                    <span className="code-keyword">() => </span>
+                    <span className="code-operator">{'{'}</span>
+                    <br />
+                    <span className="code-return">  return (</span>
+                    <br />
+                    <span className="code-text">    "I am a passionate Front End Developer,</span>
+                    <br />
+                    <span className="code-text">     specializing in creating beautiful and</span>
+                    <br />
+                    <span className="code-text">     interactive user interfaces with modern</span>
+                    <br />
+                    <span className="code-text">     web technologies."</span>
+                    <br />
+                    <span className="code-return">  );</span>
+                    <span className="code-operator">{'}'}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <h1 className="hero-title">
             {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
               <span key={index} style={{ animationDelay: `${index * 0.05}s` }}>{letter}</span>
             ))}
           </h1>
-          <h2 className="hero-subtitle">Data Science Student & Flutter Developer</h2>
+          <h2 className="hero-subtitle">Front End Developer</h2>
           <div className="hero-buttons">
             <a href="#contact" className="btn-premium">Get in Touch</a>
             <a href="#projects" className="btn-premium">View Projects</a>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="section">
-        <div className="container">
-          <h2 className="section-title">About Me</h2>
-          <div className="premium-card">
-            <p>
-              I am a passionate Data Science student at St. Thomas College, set to graduate in March 2025. 
-              With a strong foundation in both data science and mobile development, I bring a unique 
-              perspective to solving complex problems through technology.
-            </p>
           </div>
         </div>
       </section>
@@ -256,10 +285,10 @@ const App = () => {
                 description: 'Python Programming & Data Science'
               },
               { 
-                name: 'HTML', 
-                icon: '🌐', 
-                animation: 'html-animation',
-                description: 'Web Development & Design'
+                name: 'SAS', 
+                icon: '📊', 
+                animation: 'sas-animation',
+                description: 'Statistical Analysis System'
               },
               { 
                 name: 'Flutter', 
@@ -304,12 +333,6 @@ const App = () => {
                 description: 'Artificial Intelligence'
               },
               { 
-                name: 'MS Office', 
-                icon: '📑', 
-                animation: 'office-animation',
-                description: 'Productivity Tools'
-              },
-              { 
                 name: 'UI/UX Design', 
                 icon: '🎨', 
                 animation: 'design-animation',
@@ -333,9 +356,8 @@ const App = () => {
           <h2 className="section-title">Connect With Me</h2>
           <div className="social-profiles">
             {/* LinkedIn Profile */}
-            <div className="social-profile linkedin-card">
+            <div className="social-profile linkedin-card glass-effect">
               <div className="linkedin-header">
-                <img src="/src/assets/linkedin-banner.jpg" alt="LinkedIn Banner" className="linkedin-banner" />
                 <div className="linkedin-logo">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
                     <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
@@ -343,7 +365,7 @@ const App = () => {
                 </div>
               </div>
               <div className="linkedin-profile-section">
-                <div className="social-avatar profile-photo-large">
+                <div className="profile-photo-large">
                   <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
                 </div>
                 <div className="social-info">
@@ -354,41 +376,54 @@ const App = () => {
                   <p className="linkedin-education">Bvoc Datascience</p>
                   <p className="linkedin-email">sreeshksureshh@gmail.com</p>
                 </div>
-              </div>
-              <div className="social-stats">
-                <div className="stat-item">
-                  <h4>500+</h4>
-                  <p>Connections</p>
+                <div className="social-stats">
+                  <div className="stat-item">
+                    <h4>500+</h4>
+                    <p>Connections</p>
+                  </div>
                 </div>
-                <div className="stat-item">
-                  <h4>41</h4>
-                  <p>Repositories</p>
+                <div className="linkedin-post">
+                  <div className="post-header">
+                    <div className="post-author">
+                      <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
+                      <div className="post-author-info">
+                        <h4>Sreesh K Suresh</h4>
+                        <p>Data Science Student & Flutter Developer</p>
+                        <span className="post-time">2 days ago</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="post-content">
+                    <p>Excited to share that I've won 2nd prize in the TechPlus Hackathon! 🏆 Our team developed an innovative AI-based attendance system. Looking forward to more such opportunities to innovate and grow. #Hackathon #Innovation #AI #Flutter</p>
+                  </div>
+                  <div className="post-image">
+                    <img src="/src/assets/tech.jpeg" alt="Hackathon Award" />
+                  </div>
                 </div>
-                <div className="stat-item">
-                  <h4>2</h4>
-                  <p>Hackathon Wins</p>
+                <div className="social-buttons">
+                  <a href="https://www.linkedin.com/in/sreesh-k-suresh/" className="social-btn linkedin-btn" target="_blank" rel="noopener noreferrer">
+                    View LinkedIn Profile
+                  </a>
                 </div>
-              </div>
-              <div className="social-buttons">
-                <a href="https://www.linkedin.com/in/sreesh-k-suresh/" className="social-btn linkedin-btn" target="_blank" rel="noopener noreferrer">
-                  View LinkedIn Profile
-                </a>
               </div>
             </div>
 
             {/* GitHub Profile */}
-            <div className="github-profile">
+            <div className="social-profile github-profile glass-effect">
               <div className="github-header">
+                <div className="github-logo">
+                  <svg height="32" viewBox="0 0 16 16" width="32" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                  </svg>
+                </div>
                 <div className="social-avatar">
                   <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
                 </div>
                 <div className="social-info">
                   <h3>Sreesh K Suresh</h3>
                   <p>@Sreeshks</p>
+                  <p className="github-bio">CODE-EAT-SLEEP-REPEAT</p>
                 </div>
-              </div>
-              <div className="github-bio">
-                <p>CODE-EAT-SLEEP-REPEAT</p>
               </div>
               <div className="github-stats">
                 <div className="github-stat">
@@ -402,6 +437,35 @@ const App = () => {
                 <div className="github-stat">
                   <h4>2</h4>
                   <p>Stars</p>
+                </div>
+              </div>
+              <div className="github-repos">
+                <h4>Featured Repositories</h4>
+                <div className="repo-list">
+                  <div className="repo-item">
+                    <h5>movemark-frontend</h5>
+                    <p>AI-based attendance system (Hackathon Winner)</p>
+                    <div className="repo-meta">
+                      <span>⭐ 2</span>
+                      <span>🔄 Dart</span>
+                    </div>
+                  </div>
+                  <div className="repo-item">
+                    <h5>MTCNN-based-Deepfake-Detection</h5>
+                    <p>Deep learning model for detecting deepfake videos</p>
+                    <div className="repo-meta">
+                      <span>⭐ 2</span>
+                      <span>🐍 Python</span>
+                    </div>
+                  </div>
+                  <div className="repo-item">
+                    <h5>Xception-based-Cnn</h5>
+                    <p>CNN model for image classification</p>
+                    <div className="repo-meta">
+                      <span>⭐ 1</span>
+                      <span>🐍 Python</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="social-buttons">
@@ -479,6 +543,13 @@ const App = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <p>&copy; {new Date().getFullYear()} Sreesh K Suresh. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };
