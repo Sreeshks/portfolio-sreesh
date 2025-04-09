@@ -58,15 +58,7 @@ const App = () => {
           </div>
           <h1 className="hero-title">
             {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
-              <span 
-                key={index} 
-                style={{ 
-                  animationDelay: `${index * 0.05}s`,
-                  marginRight: letter === ' ' ? '0.3em' : '0'
-                }}
-              >
-                {letter}
-              </span>
+              <span key={index} style={{ animationDelay: `${index * 0.05}s` }}>{letter}</span>
             ))}
           </h1>
           <h2 className="hero-subtitle">Data Science Student & Flutter Developer</h2>
