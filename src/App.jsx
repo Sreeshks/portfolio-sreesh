@@ -216,6 +216,33 @@ const App = () => {
         </div>
       </section>
 
+      {/* Awards Section */}
+      <section id="awards" className="section">
+        <div className="container">
+          <h2 className="section-title">Awards & Achievements</h2>
+          <div className="awards-grid">
+            <div className="award-card premium-card">
+              <div className="award-content">
+                <h3>2nd Prize - TechPlus Hackathon</h3>
+                <p>Best Idea Ignator</p>
+                <div className="award-image">
+                  <img src="/src/assets/tech.jpeg" alt="TechPlus Hackathon Award" />
+                </div>
+              </div>
+            </div>
+            <div className="award-card premium-card">
+              <div className="award-content">
+                <h3>3rd Prize - HakeFX Hackathon</h3>
+                <p>Innovation in Technology</p>
+                <div className="award-image">
+                  <img src="/src/assets/hackefx.jpeg" alt="HakeFX Hackathon Award" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section id="skills" className="section">
         <div className="container">
@@ -300,27 +327,87 @@ const App = () => {
         </div>
       </section>
 
-      {/* Awards Section */}
-      <section id="awards" className="section">
+      {/* Social Media Section */}
+      <section id="social" className="section">
         <div className="container">
-          <h2 className="section-title">Awards & Achievements</h2>
-          <div className="awards-grid">
-            <div className="award-card premium-card">
-              <div className="award-content">
-                <h3>2nd Prize - TechPlus Hackathon</h3>
-                <p>Best Idea Ignator</p>
-                <div className="award-image">
-                  <img src="/src/assets/tech.jpeg" alt="TechPlus Hackathon Award" />
+          <h2 className="section-title">Connect With Me</h2>
+          <div className="social-profiles">
+            {/* LinkedIn Profile */}
+            <div className="social-profile linkedin-card">
+              <div className="linkedin-header">
+                <img src="/src/assets/linkedin-banner.jpg" alt="LinkedIn Banner" className="linkedin-banner" />
+                <div className="linkedin-logo">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" width="24" height="24">
+                    <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+                  </svg>
                 </div>
               </div>
-            </div>
-            <div className="award-card premium-card">
-              <div className="award-content">
-                <h3>3rd Prize - HakeFX Hackathon</h3>
-                <p>Innovation in Technology</p>
-                <div className="award-image">
-                  <img src="/src/assets/hackefx.jpeg" alt="HakeFX Hackathon Award" />
+              <div className="linkedin-profile-section">
+                <div className="social-avatar profile-photo-large">
+                  <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
                 </div>
+                <div className="social-info">
+                  <h3>Sreesh K Suresh</h3>
+                  <p className="linkedin-headline">Data Science Student & Flutter Developer</p>
+                  <p className="linkedin-location">Thrissur, Kerala, India</p>
+                  <p className="linkedin-education">student@st thomas college,thrissur</p>
+                  <p className="linkedin-education">Bvoc Datascience</p>
+                  <p className="linkedin-email">sreeshksureshh@gmail.com</p>
+                </div>
+              </div>
+              <div className="social-stats">
+                <div className="stat-item">
+                  <h4>500+</h4>
+                  <p>Connections</p>
+                </div>
+                <div className="stat-item">
+                  <h4>41</h4>
+                  <p>Repositories</p>
+                </div>
+                <div className="stat-item">
+                  <h4>2</h4>
+                  <p>Hackathon Wins</p>
+                </div>
+              </div>
+              <div className="social-buttons">
+                <a href="https://www.linkedin.com/in/sreesh-k-suresh/" className="social-btn linkedin-btn" target="_blank" rel="noopener noreferrer">
+                  View LinkedIn Profile
+                </a>
+              </div>
+            </div>
+
+            {/* GitHub Profile */}
+            <div className="github-profile">
+              <div className="github-header">
+                <div className="social-avatar">
+                  <img src="/src/assets/sree (1).png" alt="Sreesh K Suresh" />
+                </div>
+                <div className="social-info">
+                  <h3>Sreesh K Suresh</h3>
+                  <p>@Sreeshks</p>
+                </div>
+              </div>
+              <div className="github-bio">
+                <p>CODE-EAT-SLEEP-REPEAT</p>
+              </div>
+              <div className="github-stats">
+                <div className="github-stat">
+                  <h4>41</h4>
+                  <p>Repositories</p>
+                </div>
+                <div className="github-stat">
+                  <h4>56</h4>
+                  <p>Commits</p>
+                </div>
+                <div className="github-stat">
+                  <h4>2</h4>
+                  <p>Stars</p>
+                </div>
+              </div>
+              <div className="social-buttons">
+                <a href="https://github.com/Sreeshks" className="social-btn github-btn" target="_blank" rel="noopener noreferrer">
+                  View GitHub Profile
+                </a>
               </div>
             </div>
           </div>
