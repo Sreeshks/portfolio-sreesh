@@ -5,6 +5,8 @@ import LoadingScreen from './components/LoadingScreen';
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,14 +27,42 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      setTimeout(() => {
+        setFollowerPosition({ x: e.clientX, y: e.clientY });
+      }, 50);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   if (isLoading) {
     return <LoadingScreen onLoaded={() => setIsLoading(false)} />;
   }
 
   return (
     <div className="app">
-      {/* Floating Particles */}
-      <div className="particles">
+      {/* Custom Cursor */}
+      <div 
+        className="cursor" 
+        style={{ 
+          left: `${mousePosition.x}px`, 
+          top: `${mousePosition.y}px` 
+        }} 
+      />
+      <div 
+        className="cursor-follower" 
+        style={{ 
+          left: `${followerPosition.x}px`, 
+          top: `${followerPosition.y}px` 
+        }} 
+      />
+
+      {/* Particles */}
+      <div className="particles-container">
         {[...Array(8)].map((_, i) => (
           <div key={i} className="particle" />
         ))}
