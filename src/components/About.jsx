@@ -14,7 +14,7 @@ const About = () => {
           }
         }}>
           <div className="about-img">
-            <img src="/src/assets/profile.png" alt="Sreesh K Suresh" style={{
+            <img src="/profile.png" alt="Sreesh K Suresh" style={{
               width: '100%',
               borderRadius: '10px',
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'

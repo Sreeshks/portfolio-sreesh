@@ -6,21 +6,21 @@ const Projects = () => {
       title: "Relief Medicals Delivery App",
       technologies: "Flutter with Bloc State Management",
       description: "A delivery app for Relief Medicals staff to streamline transactions and track customer locations with real-time status updates (delivered, partially delivered, returned, or pending). Built with Flutter for the frontend and .NET for the backend, ensuring a seamless user experience.",
-      image: "/src/assets/profile.png",  // Replace with actual project image
+      image: "/profile.png",  // Replace with actual project image
       category: "Professional"
     },
-    {
+    { 
       title: "InsightPro App",
       technologies: "Flutter with Bloc State Management",
       description: "Developed a business-oriented app using Flutter and Bloc state management to provide live reports and real-time sales amounts. Implemented features for tracking business metrics, including live sales data and performance analytics, to support informed decision-making.",
-      image: "/src/assets/profile.png",  // Replace with actual project image
+      image: "/profile.png",  // Replace with actual project image
       category: "Professional"
     },
     {
       title: "Movemark - Attendance Marking System",
       technologies: "AI-Powered GAIT-Based Solution",
       description: "Developed Movemark, an attendance marking system using the GAIT system to recognize body movements for automated tracking. Integrated advanced AI techniques for accurate identification and seamless user experience. Won 2nd Prize at a hackathon.",
-      image: "/src/assets/profile.png",  // Replace with actual project image
+      image: "/profile.png",  // Replace with actual project image
       category: "Hackathon"
     },
     {

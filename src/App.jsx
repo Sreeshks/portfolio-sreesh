@@ -177,7 +177,7 @@ const App = () => {
           <div className="hero-flex-container">
             <div className="profile-section">
               <div className="profile-photo float-animation">
-                <img src="assets/sree (1).png" alt="Sreesh K Suresh" />
+                <img src="/sree (1).png" alt="Sreesh K Suresh" />
               </div>
             </div>
             <div className="code-editor-container">
@@ -255,7 +255,7 @@ const App = () => {
                 <h3>2nd Prize - TechPlus Hackathon</h3>
                 <p>Best Idea Ignator</p>
                 <div className="award-image">
-                  <img src="assets/tech.jpeg" alt="TechPlus Hackathon Award" />
+                  <img src="/tech.jpeg" alt="TechPlus Hackathon Award" />
                 </div>
               </div>
             </div>
@@ -264,7 +264,7 @@ const App = () => {
                 <h3>3rd Prize - HakeFX Hackathon</h3>
                 <p>Innovation in Technology</p>
                 <div className="award-image">
-                  <img src="assets/hackefx.jpeg" alt="HakeFX Hackathon Award" />
+                  <img src="/hackefx.jpeg" alt="HakeFX Hackathon Award" />
                 </div>
               </div>
             </div>
@@ -366,7 +366,7 @@ const App = () => {
               </div>
               <div className="linkedin-profile-section">
                 <div className="profile-photo-large">
-                  <img src="assets/sree (1).png" alt="Sreesh K Suresh" />
+                  <img src="/sree (1).png" alt="Sreesh K Suresh" />
                 </div>
                 <div className="social-info">
                   <h3>Sreesh K Suresh</h3>
@@ -385,7 +385,7 @@ const App = () => {
                 <div className="linkedin-post">
                   <div className="post-header">
                     <div className="post-author">
-                      <img src="assets/sree (1).png" alt="Sreesh K Suresh" />
+                      <img src="/sree (1).png" alt="Sreesh K Suresh" />
                       <div className="post-author-info">
                         <h4>Sreesh K Suresh</h4>
                         <p>Data Science Student & Flutter Developer</p>
@@ -397,7 +397,7 @@ const App = () => {
                     <p>Excited to share that I've won 2nd prize in the TechPlus Hackathon! 🏆 Our team developed an innovative AI-based attendance system. Looking forward to more such opportunities to innovate and grow. #Hackathon #Innovation #AI #Flutter</p>
                   </div>
                   <div className="post-image">
-                    <img src="assets/tech.jpeg" alt="Hackathon Award" />
+                    <img src="/tech.jpeg" alt="Hackathon Award" />
                   </div>
                 </div>
                 <div className="social-buttons">
@@ -417,7 +417,7 @@ const App = () => {
                   </svg>
                 </div>
                 <div className="social-avatar">
-                  <img src="assets/sree (1).png" alt="Sreesh K Suresh" />
+                  <img src="/sree (1).png" alt="Sreesh K Suresh" />
                 </div>
                 <div className="social-info">
                   <h3>Sreesh K Suresh</h3>
