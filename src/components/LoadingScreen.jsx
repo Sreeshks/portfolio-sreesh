@@ -24,9 +24,9 @@ const LoadingScreen = ({ onLoaded }) => {
   return (
     <div className={`loading-screen ${!loading ? 'fade-out' : ''}`}>
       <div className="loading-content">
-        <div className="loading-photo">
+        {/* <div className="loading-photo">
           <img src="assets/sree (1).png" alt="Sreesh K Suresh" />
-        </div>
+        </div> */}
         <h1 className="loading-name">Sreesh K Suresh</h1>
         <div className="loading-progress">
           <div className="progress-bar" style={{ width: `${progress}%` }}></div>

@@ -111,7 +111,7 @@ const App = () => {
           >
             Home
           </a>
-          <a 
+          {/* <a 
             href="#about" 
             className={activeSection === 'about' ? 'active' : ''}
             onClick={(e) => {
@@ -120,7 +120,7 @@ const App = () => {
             }}
           >
             About
-          </a>
+          </a> */}
           <a 
             href="#experience" 
             className={activeSection === 'experience' ? 'active' : ''}
