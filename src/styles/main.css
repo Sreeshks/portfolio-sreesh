@@ -37,11 +37,13 @@ body {
 
 /* Premium Effects */
 .premium-card {
-  background: var(--gradient-dark);
-  border: 1px solid rgba(138, 43, 226, 0.1);
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(18, 18, 18, 0.9));
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
   border-radius: 12px;
   padding: 2rem;
-  transition: var(--transition-normal);
   position: relative;
   overflow: hidden;
 }
@@ -59,7 +61,9 @@ body {
 }
 
 .premium-card:hover {
-  transform: translateY(-10px) scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+  border-color: rgba(138, 43, 226, 0.4);
 }
 
 .premium-card:hover::before {
@@ -68,9 +72,9 @@ body {
 
 /* Glass Effect */
 .glass-effect {
-  background: rgba(30, 30, 30, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 43, 226, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
@@ -104,7 +108,7 @@ body {
 
 .btn-premium:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-violet);
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
 }
 
 .btn-premium:hover::after {
@@ -465,50 +469,25 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 50%);
-  animation: backgroundPulse 8s ease-in-out infinite alternate;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
 }
 
-@keyframes backgroundPulse {
-  0% {
-    background-position: 0% 0%;
-    transform: scale(1);
-  }
-  50% {
-    background-position: 100% 100%;
-    transform: scale(1.1);
-  }
-  100% {
-    background-position: 0% 0%;
-    transform: scale(1);
-  }
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0.5; }
 }
 
 /* Enhanced Glass Effect */
 .glass-effect {
-  background: rgba(30, 30, 30, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 43, 226, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-effect::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.05), transparent);
-  pointer-events: none;
 }
 
 /* Premium Card Hover Effects */
@@ -693,9 +672,28 @@ html {
 
 /* Section Spacing for Navigation */
 .section {
-  padding: 2rem 0;
+  padding: 4rem 0;
+  margin: 0;
   position: relative;
   overflow: hidden;
+}
+
+#experience, #skills {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(18, 18, 18, 0.9));
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.section:nth-child(even) {
+  transform: translateX(50px);
+}
+
+.section:nth-child(even).visible {
+  transform: translateX(0);
 }
 
 /* Layout */
@@ -738,10 +736,40 @@ html {
 
 /* Projects Grid */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   padding: 2rem 0;
+  overflow: hidden;
+}
+
+.project-card {
+  position: relative;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(18, 18, 18, 0.9));
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-card.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.project-card:nth-child(even) {
+  transform: translateX(100%);
+}
+
+.project-card:nth-child(even).visible {
+  transform: translateX(0);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
 }
 
 /* Contact Section */
@@ -799,7 +827,7 @@ html {
   }
 
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     letter-spacing: 2px;
   }
   
@@ -808,11 +836,11 @@ html {
   }
 
   .hero-subtitle {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   
   .section-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .nav-content {
@@ -833,8 +861,8 @@ html {
 
   .btn-premium {
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 
   .profile-photo {
@@ -847,11 +875,38 @@ html {
   }
 
   .section {
-    padding: 1.5rem 0;
+    padding: 3rem 0;
   }
 
   .premium-card {
-    padding: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: var(--gradient-dark);
+    flex-direction: column;
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 1rem 0;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    z-index: 1001;
   }
 }
 
@@ -1115,13 +1170,11 @@ html {
 
 /* Enhanced Glass Effect */
 .glass-effect {
-  background: rgba(30, 30, 30, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(138, 43, 226, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
 }
 
 .glass-effect::after {
@@ -2136,5 +2189,66 @@ html {
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+}
+
+/* Resume Button */
+.resume-btn {
+  background: linear-gradient(45deg, #8A2BE2, #4B0082);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+.resume-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.resume-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+}
+
+.resume-btn:hover::before {
+  left: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  #experience, #skills {
+    padding: 3rem 0;
+  }
+
+  .project-card {
+    margin: 0 1rem;
+  }
+
+  .resume-btn {
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto;
   }
 } 

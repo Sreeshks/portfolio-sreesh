@@ -8,12 +8,15 @@ const App = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [visibleProjects, setVisibleProjects] = useState(new Set());
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
+      // Update active section
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element && element.offsetTop <= scrollPosition && 
@@ -22,9 +25,45 @@ const App = () => {
           break;
         }
       }
+
+      // Handle section visibility for animations
+      sections.forEach(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+          
+          setVisibleSections(prev => {
+            const newSet = new Set(prev);
+            if (isVisible) {
+              newSet.add(section);
+            }
+            return newSet;
+          });
+        }
+      });
+
+      // Handle project visibility for animations
+      const projectElements = document.querySelectorAll('.project-card');
+      projectElements.forEach((project, index) => {
+        const rect = project.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+        
+        if (isVisible) {
+          setTimeout(() => {
+            setVisibleProjects(prev => {
+              const newSet = new Set(prev);
+              newSet.add(index);
+              return newSet;
+            });
+          }, index * 200); // Stagger the animations
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -172,7 +211,7 @@ const App = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="hero-section">
+      <section id="home" className={`section ${visibleSections.has('home') ? 'visible' : ''}`}>
         <div className="hero-content">
           <div className="hero-flex-container">
             <div className="profile-section">
@@ -229,12 +268,16 @@ const App = () => {
           <div className="hero-buttons">
             <a href="#contact" className="btn-premium">Get in Touch</a>
             <a href="#projects" className="btn-premium">View Projects</a>
+            <a href="/SREESH_K_SURESH_RESUME.pdf" className="resume-btn" target="_blank" rel="noopener noreferrer">Download Resume</a>
           </div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="section">
+      <section 
+        id="experience" 
+        className={`section ${visibleSections.has('experience') ? 'visible' : ''}`}
+      >
         <div className="container">
           <h2 className="section-title">Experience</h2>
           <div className="premium-card">
@@ -273,7 +316,10 @@ const App = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="section">
+      <section 
+        id="skills" 
+        className={`section ${visibleSections.has('skills') ? 'visible' : ''}`}
+      >
         <div className="container">
           <h2 className="section-title">Skills</h2>
           <div className="skills-grid">
@@ -479,32 +525,32 @@ const App = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="section">
+      <section id="projects" className={`section ${visibleSections.has('projects') ? 'visible' : ''}`}>
         <div className="container">
           <h2 className="section-title">Projects</h2>
           <div className="projects-grid">
-            <div className="project-card">
+            <div className={`project-card ${visibleProjects.has(0) ? 'visible' : ''}`}>
               <img src="/relief-medicals.jpg" alt="Relief Medicals" className="project-image" />
               <div className="project-content">
                 <h3>Relief Medicals Delivery App</h3>
                 <p>Flutter/Bloc based medical delivery application</p>
               </div>
             </div>
-            <div className="project-card">
+            <div className={`project-card ${visibleProjects.has(1) ? 'visible' : ''}`}>
               <img src="/insightpro.jpg" alt="InsightPro" className="project-image" />
               <div className="project-content">
                 <h3>InsightPro App</h3>
                 <p>Flutter/Bloc based analytics application</p>
               </div>
             </div>
-            <div className="project-card">
+            <div className={`project-card ${visibleProjects.has(2) ? 'visible' : ''}`}>
               <img src="/movemark.jpg" alt="Movemark" className="project-image" />
               <div className="project-content">
                 <h3>Movemark Attendance System</h3>
                 <p>AI-based attendance system (Hackathon Winner)</p>
               </div>
             </div>
-            <div className="project-card">
+            <div className={`project-card ${visibleProjects.has(3) ? 'visible' : ''}`}>
               <img src="/exaima.jpg" alt="Exaima" className="project-image" />
               <div className="project-content">
                 <h3>Exaima Online Proctoring</h3>
@@ -516,7 +562,10 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section">
+      <section 
+        id="contact" 
+        className={`section ${visibleSections.has('contact') ? 'visible' : ''}`}
+      >
         <div className="container">
           <h2 className="section-title">Contact</h2>
           <div className="premium-card">
