@@ -56,12 +56,10 @@ const Contact = () => {
                 display: 'flex',
                 gap: '15px'
               }}>
-                <a href="https://www.linkedin.com/in/sreeshksuresh/" target="_blank" rel="noopener noreferrer" className="btn">
+                <a href="https://www.linkedin.com/in/sreeshksuresh/" target="_blank" rel="noopener noreferrer" className="btn-premium">
                   LinkedIn
                 </a>
-                <a href="https://github.com/sreeshksureshh" target="_blank" rel="noopener noreferrer" className="btn" style={{
-                  backgroundColor: '#333'
-                }}>
+                <a href="https://github.com/sreeshksureshh" target="_blank" rel="noopener noreferrer" className="btn-premium">
                   GitHub
                 </a>
               </div>

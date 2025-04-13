@@ -54,16 +54,7 @@ const Projects = () => {
             <button 
               key={category} 
               onClick={() => setFilter(category)}
-              style={{
-                padding: '8px 20px',
-                borderRadius: '5px',
-                border: 'none',
-                backgroundColor: filter === category ? 'var(--primary-color)' : '#e2e8f0',
-                color: filter === category ? 'white' : 'var(--dark-color)',
-                cursor: 'pointer',
-                fontWeight: 500,
-                transition: 'var(--transition)'
-              }}
+              className={`btn-premium ${filter === category ? 'active' : ''}`}
             >
               {category}
             </button>

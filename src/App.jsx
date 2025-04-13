@@ -268,7 +268,7 @@ const App = () => {
           <div className="hero-buttons">
             <a href="#contact" className="btn-premium">Get in Touch</a>
             <a href="#projects" className="btn-premium">View Projects</a>
-            <a href="/SREESH_K_SURESH_RESUME.pdf" className="resume-btn" target="_blank" rel="noopener noreferrer">Download Resume</a>
+            <a href="/SREESH_K_SURESH_RESUME.pdf" className="btn-premium" target="_blank" rel="noopener noreferrer">Download Resume</a>
           </div>
         </div>
       </section>
@@ -530,33 +530,38 @@ const App = () => {
           <h2 className="section-title">Projects</h2>
           <div className="projects-grid">
             <div className={`project-card ${visibleProjects.has(0) ? 'visible' : ''}`}>
-              <img src="/relief-medicals.jpg" alt="Relief Medicals" className="project-image" />
-              <div className="project-content">
-                <h3>Relief Medicals Delivery App</h3>
-                <p>Flutter/Bloc based medical delivery application</p>
-              </div>
-            </div>
-            <div className={`project-card ${visibleProjects.has(1) ? 'visible' : ''}`}>
-              <img src="/insightpro.jpg" alt="InsightPro" className="project-image" />
-              <div className="project-content">
-                <h3>InsightPro App</h3>
-                <p>Flutter/Bloc based analytics application</p>
-              </div>
-            </div>
-            <div className={`project-card ${visibleProjects.has(2) ? 'visible' : ''}`}>
               <img src="/movemark.jpg" alt="Movemark" className="project-image" />
               <div className="project-content">
                 <h3>Movemark Attendance System</h3>
-                <p>AI-based attendance system (Hackathon Winner)</p>
+                <p>Award-winning AI-based attendance system using GAIT recognition technology. Secured 2nd Prize at TechPlus Hackathon for innovative approach to attendance tracking.</p>
+              </div>
+            </div>
+            <div className={`project-card ${visibleProjects.has(1) ? 'visible' : ''}`}>
+              <img src="/shopease.jpg" alt="Shopease" className="project-image" />
+              <div className="project-content">
+                <h3>Shopease</h3>
+                <p>Smart product locator system helping users find products and their prices efficiently in stores</p>
+              </div>
+            </div>
+            <div className={`project-card ${visibleProjects.has(2) ? 'visible' : ''}`}>
+              <img src="/deepfake.jpg" alt="Deepfake Detection" className="project-image" />
+              <div className="project-content">
+                <h3>Deepfake Video Detection</h3>
+                <p>Advanced AI system for detecting manipulated videos using deep learning techniques</p>
               </div>
             </div>
             <div className={`project-card ${visibleProjects.has(3) ? 'visible' : ''}`}>
-              <img src="/exaima.jpg" alt="Exaima" className="project-image" />
+              <img src="/devexy.jpg" alt="DevExy" className="project-image" />
               <div className="project-content">
-                <h3>Exaima Online Proctoring</h3>
-                <p>React/Vite based online examination system</p>
+                <h3>DevExy - Project Visualizer</h3>
+                <p>React/Vite based web app that generates structure diagrams from project zip files (HackeFX 3rd Prize Winner)</p>
               </div>
             </div>
+          </div>
+          <div className="view-all-projects">
+            <a href="https://github.com/Sreeshks" className="view-projects-btn" target="_blank" rel="noopener noreferrer">
+              View All Projects <i className="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </section>

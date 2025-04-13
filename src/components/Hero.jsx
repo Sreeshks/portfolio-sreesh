@@ -45,11 +45,8 @@ const Hero = () => {
           Passionate about creating innovative solutions using Flutter, React, and Data Science technologies
         </p>
         <div style={{ display: 'flex', gap: '20px' }}>
-          <a href="#projects" className="btn">View Projects</a>
-          <a href="#contact" className="btn" style={{
-            backgroundColor: 'transparent',
-            border: '2px solid white'
-          }}>Contact Me</a>
+          <a href="#projects" className="btn-premium">View Projects</a>
+          <a href="#contact" className="btn-premium">Contact Me</a>
         </div>
       </div>
       <div className="scroll-down" style={{

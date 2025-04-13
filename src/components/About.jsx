@@ -51,10 +51,8 @@ const About = () => {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '15px' }}>
-              <a href="https://www.linkedin.com/in/sreeshksuresh/" target="_blank" className="btn">LinkedIn</a>
-              <a href="https://github.com/sreeshksureshh" target="_blank" className="btn" style={{
-                backgroundColor: '#333'
-              }}>Github</a>
+              <a href="https://www.linkedin.com/in/sreeshksuresh/" target="_blank" className="btn-premium">LinkedIn</a>
+              <a href="https://github.com/sreeshksureshh" target="_blank" className="btn-premium">Github</a>
             </div>
           </div>
         </div>
