@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './styles/main.css';
 import LoadingScreen from './components/LoadingScreen';
+import emailjs from '@emailjs/browser';
 
 const App = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -12,11 +13,12 @@ const App = () => {
   const [visibleProjects, setVisibleProjects] = useState(new Set());
   const [scrollProgress, setScrollProgress] = useState(0);
   
-  // Refs for parallax effects
+  // Refs for parallax effects and form
   const heroRef = useRef(null);
   const skillsRef = useRef(null);
   const projectsRef = useRef(null);
-  
+  const formRef = useRef(null);
+
   // Handle scroll progress for progress indicator
   useEffect(() => {
     const handleScrollProgress = () => {
@@ -129,8 +131,8 @@ const App = () => {
         
         hoverElement.style.transform = `translate(${distX * 0.08}px, ${distY * 0.08}px)`;
       } else {
-      setTimeout(() => {
-        setFollowerPosition({ x: e.clientX, y: e.clientY });
+        setTimeout(() => {
+          setFollowerPosition({ x: e.clientX, y: e.clientY });
         }, 40);
         
         document.querySelectorAll('.magnetic').forEach(el => {
@@ -214,6 +216,24 @@ const App = () => {
     document.body.style.overflow = 'auto';
   };
 
+  // EmailJS form submission handler
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_y1oo008', 'template_ef1muua', formRef.current, 'uysO6IreArGmMYxST')
+      .then(
+        (result) => {
+          alert('Message sent successfully!');
+          formRef.current.reset();
+        },
+        (error) => {
+          alert('Failed to send message. Please try again.');
+          console.error('EmailJS error:', error.text);
+        }
+      );
+  };
+
   if (isLoading) {
     return <LoadingScreen onLoaded={() => setIsLoading(false)} />;
   }
@@ -246,11 +266,11 @@ const App = () => {
             key={i} 
             className={`particle particle-${i % 4}`}
             style={{
-              animationDuration: `${15 + Math.random() * 8}s`, // Slightly faster for smaller scale
+              animationDuration: `${15 + Math.random() * 8}s`,
               animationDelay: `${Math.random() * 4}s`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 6 + 3}px`, // Smaller particles
+              width: `${Math.random() * 6 + 3}px`,
               height: `${Math.random() * 6 + 3}px`,
               opacity: Math.random() * 0.3 + 0.2
             }}
@@ -305,64 +325,58 @@ const App = () => {
         ref={heroRef}
       >
         <div className="container">
-        <div className="hero-content">
+          <div className="hero-content">
             <div className="hero-flex-container parallax" data-speed="0.1">
-            <div className="profile-section">
-              <div className="profile-photo float-animation">
-                <img src="/sree (1).png" alt="Sreesh K Suresh" />
-              </div>
-            </div>
-            <div className="code-editor-container">
-              <div className="editor-header">
-                <div className="window-controls">
-                  <span className="control close"></span>
-                  <span className="control minimize"></span>
-                  <span className="control maximize"></span>
+              <div className="profile-section">
+                <div className="profile-photo float-animation">
+                  <img src="/sree (1).png" alt="Sreesh K Suresh" />
                 </div>
-                <div className="tab">about.tsx</div>
               </div>
-              <div className="editor-content">
-                <div className="line-numbers">
-                  {Array.from({ length: 6 }, (_, i) => (
-                    <span key={i}>{i + 1}</span>
-                  ))}
+              <div className="code-editor-container">
+                <div className="editor-header">
+                  <div className="window-controls">
+                    <span className="control close"></span>
+                    <span className="control minimize"></span>
+                    <span className="control maximize"></span>
+                  </div>
+                  <div className="tab">about.tsx</div>
                 </div>
-                <div className="code-content">
-                  <div className="typing-effect">
-                    <span className="code-keyword">const</span>
-                    <span className="code-variable"> AboutMe</span>
-                    <span className="code-operator"> = </span>
-                    <span className="code-keyword">{`() => `}</span>
-                    <span className="code-operator">{'{'}</span>
-                    <br />
-                    <span className="code-return">  return (</span>
-                    <br />
-                    <span className="code-text">    "I am a Flutter developer with a strong foundation in Data Science, having completed my degree from St. Thomas College. My expertise lies in mobile application development, UI/UX design, and data analysis. I specialize in building high-performance business applications using Flutter and have hands-on experience integrating AI-driven solutions.
+                <div className="editor-content">
+                  <div className="line-numbers">
+                    {Array.from({ length: 6 }, (_, i) => (
+                      <span key={i}>{i + 1}</span>
+                    ))}
+                  </div>
+                  <div className="code-content">
+                    <div className="typing-effect">
+                      <span className="code-keyword">const</span>
+                      <span className="code-variable"> AboutMe</span>
+                      <span className="code-operator"> = </span>
+                      <span className="code-keyword">{`() => `}</span>
+                      <span className="code-operator">{'{'}</span>
+                      <br />
+                      <span className="code-return">  return (</span>
+                      <br />
+                      <span className="code-text">    "I am a Flutter developer with a strong foundation in Data Science, having completed my degree from St. Thomas College. My expertise lies in mobile application development, UI/UX design, and data analysis. I specialize in building high-performance business applications using Flutter and have hands-on experience integrating AI-driven solutions.
 
 With proficiency in Python programming, web development, and database management, I bring a versatile skill set to every project. My passion lies in creating intuitive, user-friendly digital experiences and solving real-world problems with the power of data and technology.
 
 </span>
-                    <br />
-                    {/* <span className="code-text">     specializing in creating beautiful and</span>
-                    <br />
-                    <span className="code-text">     interactive user interfaces with modern</span>
-                    <br />
-                    <span className="code-text">     web technologies."</span> */}
-                    {/* <br /> */}
-                    <span className="code-return">  );</span>
-                    <span className="code-operator">{'}'}</span>
+                      <br />
+                      <span className="code-return">  );</span>
+                      <span className="code-operator">{'}'}</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <h1 className="hero-title">
-            {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
+            <h1 className="hero-title">
+              {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
                 <span key={index} style={{ animationDelay: `${index * 0.04}s` }}>{letter}</span>
-            ))}
-          </h1>
+              ))}
+            </h1>
             <h2 className="hero-subtitle">Developer</h2>
-          <div className="hero-buttons">
+            <div className="hero-buttons">
               <a href="#contact" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>
                 Get in Touch
               </a>
@@ -453,12 +467,12 @@ With proficiency in Python programming, web development, and database management
             ].map((award, index) => (
               <div key={index} className="award-card premium-card tilt-effect">
                 <div className="card-glare"></div>
-              <div className="award-content">
+                <div className="award-content">
                   <h3>{award.title}</h3>
                   <p>{award.description}</p>
-                <div className="award-image">
+                  <div className="award-image">
                     <img src={award.image} alt={award.alt} />
-            </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -521,21 +535,18 @@ With proficiency in Python programming, web development, and database management
             {[
               {
                 title: 'Data Analyst with Python',
-                // issuer: 'IBM Skills Network',
                 image: '/DataAnalystwithpython.png',
                 alt: 'Data Analyst with Python Certificate',
                 link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
               },
               {
                 title: 'Flutter Development',
-                // issuer: 'Udemy',
                 image: '/flutter.png',
                 alt: 'Flutter Development Certificate',
                 link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
               },
               {
                 title: 'Git & GitHub',
-                // issuer: 'Udemy',
                 image: '/Git.png',
                 alt: 'Git & GitHub Certificate',
                 link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
@@ -563,20 +574,10 @@ With proficiency in Python programming, web development, and database management
                 <div className="certificate-content">
                   <h3>{certificate.title}</h3>
                   <p>{certificate.issuer}</p>
-                  {/* <div className="certificate-link">
-                    <a
-                      href={certificate.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link magnetic"
-                    >
-                      View Certificate
-                    </a>
-                  </div> */}
                 </div>
               </div>
             ))}
-            </div>
+          </div>
           <div className="view-all-certificates">
             <a 
               href="https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/" 
@@ -590,8 +591,6 @@ With proficiency in Python programming, web development, and database management
           </div>
         </div>
       </section>
-
-      {/* Social Media Section */}
 
       {/* Projects Section */}
       <section 
@@ -617,16 +616,6 @@ With proficiency in Python programming, web development, and database management
                   { url: '#', label: 'Demo' }
                 ]
               },
-              // {
-              //   title: 'Shopease',
-              //   desc: 'Smart product locator system helping users find products and their prices efficiently in stores',
-              //   image: 'public/ShopEase.jpg',
-              //   tech: ['React', 'Django', 'Computer Vision'],
-              //   links: [
-              //     { url: 'https://github.com/Sreeshks/shopease', label: 'GitHub' },
-              //     { url: '#', label: 'Demo' }
-              //   ]
-              // },
               {
                 title: 'Deepfake Video Detection',
                 desc: 'Advanced AI system for detecting manipulated videos using deep learning techniques',
@@ -651,23 +640,23 @@ With proficiency in Python programming, web development, and database management
               <div key={index} className={`project-card premium-card tilt-effect ${visibleProjects.has(index) ? 'visible' : ''}`}>
                 <div className="card-glare"></div>
                 <img src={project.image} alt={project.title} className="project-image" />
-              <div className="project-content">
+                <div className="project-content">
                   <h3>{project.title}</h3>
                   <p>{project.desc}</p>
                   <div className="project-tech">
                     {project.tech.map(tech => (
                       <span key={tech} className="tech-tag">{tech}</span>
                     ))}
-              </div>
+                  </div>
                   <div className="project-links">
                     {project.links.map(link => (
                       <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="project-link magnetic">{link.label}</a>
                     ))}
-              </div>
-            </div>
+                  </div>
+                </div>
               </div>
             ))}
-            </div>
+          </div>
           <div className="view-all-projects">
             <a href="https://github.com/Sreeshks" className="view-projects-btn premium-btn magnetic" target="_blank" rel="noopener noreferrer">
               View All Projects <i className="fas fa-arrow-right"></i>
@@ -691,7 +680,7 @@ With proficiency in Python programming, web development, and database management
           <div className="premium-card contact-card tilt-effect">
             <div className="card-glare"></div>
             <div className="contact-content">
-            <div className="contact-info">
+              <div className="contact-info">
                 <div className="contact-item">
                   <div className="contact-icon">✉️</div>
                   <p>sreeshksureshh@gmail.com</p>
@@ -724,24 +713,24 @@ With proficiency in Python programming, web development, and database management
                   </a>
                 </div>
               </div>
-              <div className="contact-form">
-              <div className="form-group">
-                  <input type="text" className="form-control premium-input" placeholder="Name" required />
-                  <div className="input-glow"></div>
-              </div>
-              <div className="form-group">
-                  <input type="email" className="form-control premium-input" placeholder="Email" required />
-                  <div className="input-glow"></div>
-              </div>
-              <div className="form-group">
-                  <textarea className="form-control premium-input" placeholder="Message" rows="5" required></textarea>
+              <form className="contact-form" ref={formRef} onSubmit={sendEmail}>
+                <div className="form-group">
+                  <input type="text" name="user_name" className="form-control premium-input" placeholder="Name" required />
                   <div className="input-glow"></div>
                 </div>
-                <button type="button" className="btn-premium magnetic">
+                <div className="form-group">
+                  <input type="email" name="user_email" className="form-control premium-input" placeholder="Email" required />
+                  <div className="input-glow"></div>
+                </div>
+                <div className="form-group">
+                  <textarea name="message" className="form-control premium-input" placeholder="Message" rows="5" required></textarea>
+                  <div className="input-glow"></div>
+                </div>
+                <button type="submit" className="btn-premium magnetic">
                   <span>Send Message</span>
                   <div className="btn-glow"></div>
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
