@@ -536,17 +536,17 @@ With proficiency in Python programming, web development, and database management
               {
                 title: 'Movemark Attendance System',
                 desc: 'AI-based attendance system using facial recognition (TechPlus Hackathon 2nd Prize Winner)',
-                image: 'public/Movemark.jpeg',
+                image: '/Movemark.jpeg',
                 tech: ['Flutter', 'Python', 'TensorFlow'],
                 links: [
                   { url: 'https://github.com/Sreeshks/movemark-frontend', label: 'GitHub' },
-                  { url: '#', label: 'Demo' }
+                 
                 ]
               },
               {
                 title: 'Deepfake Video Detection',
                 desc: 'Advanced AI system for detecting manipulated videos using deep learning techniques',
-                image: 'public/Deepfake.png',
+                image: '/Deepfake.png',
                 tech: ['Python', 'TensorFlow', 'OpenCV'],
                 links: [
                   { url: 'https://github.com/Sreeshks/MTCNN-based-Deepfake-Detection', label: 'GitHub' },
@@ -556,11 +556,11 @@ With proficiency in Python programming, web development, and database management
               {
                 title: 'DevExy - Project Visualizer',
                 desc: 'React/Vite based web app that generates structure diagrams from project zip files (HackeFX 3rd Prize Winner)',
-                image: 'public/DevExy.png',
+                image: '/DevExy.png',
                 tech: ['React', 'Vite', 'D3.js'],
                 links: [
                   { url: 'https://github.com/Sreeshks/devexy', label: 'GitHub' },
-                  { url: '#', label: 'Demo' }
+                 
                 ]
               }
             ].map((project, index) => (
