@@ -129,8 +129,8 @@ const App = () => {
         
         hoverElement.style.transform = `translate(${distX * 0.08}px, ${distY * 0.08}px)`;
       } else {
-        setTimeout(() => {
-          setFollowerPosition({ x: e.clientX, y: e.clientY });
+      setTimeout(() => {
+        setFollowerPosition({ x: e.clientX, y: e.clientY });
         }, 40);
         
         document.querySelectorAll('.magnetic').forEach(el => {
@@ -274,7 +274,7 @@ const App = () => {
         </button>
         
         <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          {['home', 'experience', 'education', 'awards', 'skills', 'projects', 'contact'].map(section => (
+          {['home', 'experience', 'education', 'awards', 'skills', 'certificates', 'projects', 'contact'].map(section => (
             <a 
               key={section}
               href={`#${section}`} 
@@ -305,60 +305,64 @@ const App = () => {
         ref={heroRef}
       >
         <div className="container">
-          <div className="hero-content">
+        <div className="hero-content">
             <div className="hero-flex-container parallax" data-speed="0.1">
-              <div className="profile-section">
-                <div className="profile-photo float-animation">
-                  <img src="/sree (1).png" alt="Sreesh K Suresh" />
-                </div>
+            <div className="profile-section">
+              <div className="profile-photo float-animation">
+                <img src="/sree (1).png" alt="Sreesh K Suresh" />
               </div>
-              <div className="code-editor-container">
-                <div className="editor-header">
-                  <div className="window-controls">
-                    <span className="control close"></span>
-                    <span className="control minimize"></span>
-                    <span className="control maximize"></span>
-                  </div>
-                  <div className="tab">about.tsx</div>
+            </div>
+            <div className="code-editor-container">
+              <div className="editor-header">
+                <div className="window-controls">
+                  <span className="control close"></span>
+                  <span className="control minimize"></span>
+                  <span className="control maximize"></span>
                 </div>
-                <div className="editor-content">
-                  <div className="line-numbers">
-                    {Array.from({ length: 6 }, (_, i) => (
-                      <span key={i}>{i + 1}</span>
-                    ))}
-                  </div>
-                  <div className="code-content">
-                    <div className="typing-effect">
-                      <span className="code-keyword">const</span>
-                      <span className="code-variable"> AboutMe</span>
-                      <span className="code-operator"> = </span>
-                      <span className="code-keyword">{`() => `}</span>
-                      <span className="code-operator">{'{'}</span>
-                      <br />
-                      <span className="code-return">  return (</span>
-                      <br />
-                      <span className="code-text">    "I am a passionate Front End Developer,</span>
-                      <br />
-                      <span className="code-text">     specializing in creating beautiful and</span>
-                      <br />
-                      <span className="code-text">     interactive user interfaces with modern</span>
-                      <br />
-                      <span className="code-text">     web technologies."</span>
-                      <br />
-                      <span className="code-return">  );</span>
-                      <span className="code-operator">{'}'}</span>
-                    </div>
+                <div className="tab">about.tsx</div>
+              </div>
+              <div className="editor-content">
+                <div className="line-numbers">
+                  {Array.from({ length: 6 }, (_, i) => (
+                    <span key={i}>{i + 1}</span>
+                  ))}
+                </div>
+                <div className="code-content">
+                  <div className="typing-effect">
+                    <span className="code-keyword">const</span>
+                    <span className="code-variable"> AboutMe</span>
+                    <span className="code-operator"> = </span>
+                    <span className="code-keyword">{`() => `}</span>
+                    <span className="code-operator">{'{'}</span>
+                    <br />
+                    <span className="code-return">  return (</span>
+                    <br />
+                    <span className="code-text">    "I am a Flutter developer with a strong foundation in Data Science, having completed my degree from St. Thomas College. My expertise lies in mobile application development, UI/UX design, and data analysis. I specialize in building high-performance business applications using Flutter and have hands-on experience integrating AI-driven solutions.
+
+With proficiency in Python programming, web development, and database management, I bring a versatile skill set to every project. My passion lies in creating intuitive, user-friendly digital experiences and solving real-world problems with the power of data and technology.
+
+</span>
+                    <br />
+                    {/* <span className="code-text">     specializing in creating beautiful and</span>
+                    <br />
+                    <span className="code-text">     interactive user interfaces with modern</span>
+                    <br />
+                    <span className="code-text">     web technologies."</span> */}
+                    {/* <br /> */}
+                    <span className="code-return">  );</span>
+                    <span className="code-operator">{'}'}</span>
                   </div>
                 </div>
               </div>
             </div>
-            <h1 className="hero-title">
-              {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
+          </div>
+          <h1 className="hero-title">
+            {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
                 <span key={index} style={{ animationDelay: `${index * 0.04}s` }}>{letter}</span>
-              ))}
-            </h1>
+            ))}
+          </h1>
             <h2 className="hero-subtitle">Developer</h2>
-            <div className="hero-buttons">
+          <div className="hero-buttons">
               <a href="#contact" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>
                 Get in Touch
               </a>
@@ -449,12 +453,12 @@ const App = () => {
             ].map((award, index) => (
               <div key={index} className="award-card premium-card tilt-effect">
                 <div className="card-glare"></div>
-                <div className="award-content">
+              <div className="award-content">
                   <h3>{award.title}</h3>
                   <p>{award.description}</p>
-                  <div className="award-image">
+                <div className="award-image">
                     <img src={award.image} alt={award.alt} />
-                  </div>
+            </div>
                 </div>
               </div>
             ))}
@@ -485,7 +489,9 @@ const App = () => {
               { name: 'Tableau', icon: '📊', animation: 'tableau-animation', description: 'Data Visualization' },
               { name: 'R', icon: '📈', animation: 'r-animation', description: 'Statistical Analysis' },
               { name: 'AI', icon: '🤖', animation: 'ai-animation', description: 'Artificial Intelligence' },
-              { name: 'UI/UX Design', icon: '🎨', animation: 'design-animation', description: 'User Interface Design' }
+              { name: 'UI/UX Design', icon: '🎨', animation: 'design-animation', description: 'User Interface Design' },
+              { name: 'Machine Learning', icon: '🧠', animation: 'ml-animation', description: 'ML Algorithms & Model Development' },
+              { name: 'HTML', icon: '🌐', animation: 'html-animation', description: 'Web Development & Markup' }
             ].map((skill, index) => (
               <div key={skill.name} className="skill-card premium-card tilt-effect" style={{ transitionDelay: `${index * 0.1}s` }}>
                 <div className="card-glare"></div>
@@ -498,74 +504,95 @@ const App = () => {
           </div>
         </div>
       </section>
-{/* Certificates Section */}
-<section 
-  id="certificates" 
-  className={`section ${visibleSections.has('certificates') ? 'visible' : ''}`}
->
-  <div className="container">
-    <h2 className="section-title">
-      <span className="title-decoration"></span>
-      Certificates
-      <span className="title-decoration"></span>
-    </h2>
-    <div className="certificates-grid">
-      {[
-        {
-          title: 'Front End Development with React',
-          issuer: 'Coursera',
-          image: '/certificate1.jpg',
-          alt: 'Front End Development Certificate',
-          link: 'https://www.coursera.org/account/accomplishments/certificate/XXXXXXX'
-        },
-        {
-          title: 'Flutter & Dart - The Complete Guide',
-          issuer: 'Udemy',
-          image: '/certificate2.jpg',
-          alt: 'Flutter Development Certificate',
-          link: 'https://www.udemy.com/certificate/XXXXXXX'
-        },
-        {
-          title: 'Data Science with Python',
-          issuer: 'IBM Skills Network',
-          image: '/certificate3.jpg',
-          alt: 'Data Science Certificate',
-          link: 'https://www.credly.com/badges/XXXXXXX'
-        }
-      ].map((certificate, index) => (
-        <div
-          key={index}
-          className={`certificate-card premium-card tilt-effect ${
-            visibleProjects.has(index) ? 'visible' : ''
-          }`}
-        >
-          <div className="card-glare"></div>
-          <img
-            src={certificate.image}
-            alt={certificate.alt}
-            className="certificate-image"
-          />
-          <div className="certificate-content">
-            <h3>{certificate.title}</h3>
-            <p>{certificate.issuer}</p>
-            <div className="certificate-link">
-              <a
-                href={certificate.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link magnetic"
+
+      {/* Certificates Section */}
+      <section 
+        id="certificates" 
+        className={`section ${visibleSections.has('certificates') ? 'visible' : ''}`}
+      >
+        <div className="container">
+          <h2 className="section-title">
+            <span className="title-decoration"></span>
+            Certificates
+            <span className="title-decoration"></span>
+          </h2>
+          <p className="section-subtitle">Featured Certificates - View all on LinkedIn</p>
+          <div className="certificates-grid">
+            {[
+              {
+                title: 'Data Analyst with Python',
+                // issuer: 'IBM Skills Network',
+                image: '/DataAnalystwithpython.png',
+                alt: 'Data Analyst with Python Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              },
+              {
+                title: 'Flutter Development',
+                // issuer: 'Udemy',
+                image: '/flutter.png',
+                alt: 'Flutter Development Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              },
+              {
+                title: 'Git & GitHub',
+                // issuer: 'Udemy',
+                image: '/Git.png',
+                alt: 'Git & GitHub Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              },
+              {
+                title: 'Digital Marketing',
+                issuer: 'Google',
+                image: '/digital_marketing.png',
+                alt: 'Digital Marketing Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              }
+            ].map((certificate, index) => (
+              <div
+                key={index}
+                className={`certificate-card premium-card tilt-effect ${
+                  visibleProjects.has(index) ? 'visible' : ''
+                }`}
               >
-                View Certificate
-              </a>
+                <div className="card-glare"></div>
+                <img
+                  src={certificate.image}
+                  alt={certificate.alt}
+                  className="certificate-image"
+                />
+                <div className="certificate-content">
+                  <h3>{certificate.title}</h3>
+                  <p>{certificate.issuer}</p>
+                  {/* <div className="certificate-link">
+                    <a
+                      href={certificate.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link magnetic"
+                    >
+                      View Certificate
+                    </a>
+                  </div> */}
+                </div>
+              </div>
+            ))}
             </div>
+          <div className="view-all-certificates">
+            <a 
+              href="https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/" 
+              className="view-certificates-btn premium-btn magnetic" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              View All Certificates <i className="fas fa-arrow-right"></i>
+              <div className="btn-glow"></div>
+            </a>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
       {/* Social Media Section */}
-   
+
       {/* Projects Section */}
       <section 
         id="projects" 
@@ -624,23 +651,23 @@ const App = () => {
               <div key={index} className={`project-card premium-card tilt-effect ${visibleProjects.has(index) ? 'visible' : ''}`}>
                 <div className="card-glare"></div>
                 <img src={project.image} alt={project.title} className="project-image" />
-                <div className="project-content">
+              <div className="project-content">
                   <h3>{project.title}</h3>
                   <p>{project.desc}</p>
                   <div className="project-tech">
                     {project.tech.map(tech => (
                       <span key={tech} className="tech-tag">{tech}</span>
                     ))}
-                  </div>
+              </div>
                   <div className="project-links">
                     {project.links.map(link => (
                       <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="project-link magnetic">{link.label}</a>
                     ))}
-                  </div>
-                </div>
+              </div>
+            </div>
               </div>
             ))}
-          </div>
+            </div>
           <div className="view-all-projects">
             <a href="https://github.com/Sreeshks" className="view-projects-btn premium-btn magnetic" target="_blank" rel="noopener noreferrer">
               View All Projects <i className="fas fa-arrow-right"></i>
@@ -664,7 +691,7 @@ const App = () => {
           <div className="premium-card contact-card tilt-effect">
             <div className="card-glare"></div>
             <div className="contact-content">
-              <div className="contact-info">
+            <div className="contact-info">
                 <div className="contact-item">
                   <div className="contact-icon">✉️</div>
                   <p>sreeshksureshh@gmail.com</p>
@@ -698,15 +725,15 @@ const App = () => {
                 </div>
               </div>
               <div className="contact-form">
-                <div className="form-group">
+              <div className="form-group">
                   <input type="text" className="form-control premium-input" placeholder="Name" required />
                   <div className="input-glow"></div>
-                </div>
-                <div className="form-group">
+              </div>
+              <div className="form-group">
                   <input type="email" className="form-control premium-input" placeholder="Email" required />
                   <div className="input-glow"></div>
-                </div>
-                <div className="form-group">
+              </div>
+              <div className="form-group">
                   <textarea className="form-control premium-input" placeholder="Message" rows="5" required></textarea>
                   <div className="input-glow"></div>
                 </div>
