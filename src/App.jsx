@@ -294,7 +294,7 @@ const App = () => {
         </button>
         
         <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          {['home', 'experience', 'education', 'awards', 'skills', 'certificates', 'projects', 'contact'].map(section => (
+          {['home', 'experience', 'education', 'awards', 'skills', 'projects','certificates', 'contact'].map(section => (
             <a 
               key={section}
               href={`#${section}`} 
@@ -519,79 +519,6 @@ With proficiency in Python programming, web development, and database management
         </div>
       </section>
 
-      {/* Certificates Section */}
-      <section 
-        id="certificates" 
-        className={`section ${visibleSections.has('certificates') ? 'visible' : ''}`}
-      >
-        <div className="container">
-          <h2 className="section-title">
-            <span className="title-decoration"></span>
-            Certificates
-            <span className="title-decoration"></span>
-          </h2>
-          <p className="section-subtitle">Featured Certificates - View all on LinkedIn</p>
-          <div className="certificates-grid">
-            {[
-              {
-                title: 'Data Analyst with Python',
-                image: '/DataAnalystwithpython.png',
-                alt: 'Data Analyst with Python Certificate',
-                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
-              },
-              {
-                title: 'Flutter Development',
-                image: '/flutter.png',
-                alt: 'Flutter Development Certificate',
-                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
-              },
-              {
-                title: 'Git & GitHub',
-                image: '/Git.png',
-                alt: 'Git & GitHub Certificate',
-                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
-              },
-              {
-                title: 'Digital Marketing',
-                issuer: 'Google',
-                image: '/digital_marketing.png',
-                alt: 'Digital Marketing Certificate',
-                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
-              }
-            ].map((certificate, index) => (
-              <div
-                key={index}
-                className={`certificate-card premium-card tilt-effect ${
-                  visibleProjects.has(index) ? 'visible' : ''
-                }`}
-              >
-                <div className="card-glare"></div>
-                <img
-                  src={certificate.image}
-                  alt={certificate.alt}
-                  className="certificate-image"
-                />
-                <div className="certificate-content">
-                  <h3>{certificate.title}</h3>
-                  <p>{certificate.issuer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="view-all-certificates">
-            <a 
-              href="https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/" 
-              className="view-certificates-btn premium-btn magnetic" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              View All Certificates <i className="fas fa-arrow-right"></i>
-              <div className="btn-glow"></div>
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Projects Section */}
       <section 
         id="projects" 
@@ -660,6 +587,79 @@ With proficiency in Python programming, web development, and database management
           <div className="view-all-projects">
             <a href="https://github.com/Sreeshks" className="view-projects-btn premium-btn magnetic" target="_blank" rel="noopener noreferrer">
               View All Projects <i className="fas fa-arrow-right"></i>
+              <div className="btn-glow"></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Certificates Section */}
+      <section 
+        id="certificates" 
+        className={`section ${visibleSections.has('certificates') ? 'visible' : ''}`}
+      >
+        <div className="container">
+          <h2 className="section-title">
+            <span className="title-decoration"></span>
+            Certificates
+            <span className="title-decoration"></span>
+          </h2>
+          <p className="section-subtitle">Featured Certificates - View all on LinkedIn</p>
+          <div className="certificates-grid">
+            {[
+              {
+                title: 'Data Analyst with Python',
+                image: '/DataAnalystwithpython.png',
+                alt: 'Data Analyst with Python Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              },
+              {
+                title: 'Flutter Development',
+                image: '/flutter.png',
+                alt: 'Flutter Development Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              },
+              {
+                title: 'Git & GitHub',
+                image: '/Git.png',
+                alt: 'Git & GitHub Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              },
+              {
+                title: 'Digital Marketing',
+                issuer: 'Google',
+                image: '/digital_marketing.png',
+                alt: 'Digital Marketing Certificate',
+                link: 'https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/'
+              }
+            ].map((certificate, index) => (
+              <div
+                key={index}
+                className={`certificate-card premium-card tilt-effect ${
+                  visibleProjects.has(index) ? 'visible' : ''
+                }`}
+              >
+                <div className="card-glare"></div>
+                <img
+                  src={certificate.image}
+                  alt={certificate.alt}
+                  className="certificate-image"
+                />
+                <div className="certificate-content">
+                  <h3>{certificate.title}</h3>
+                  <p>{certificate.issuer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="view-all-certificates">
+            <a 
+              href="https://www.linkedin.com/in/sreesh-k-suresh/details/certifications/" 
+              className="view-certificates-btn premium-btn magnetic" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              View All Certificates <i className="fas fa-arrow-right"></i>
               <div className="btn-glow"></div>
             </a>
           </div>
