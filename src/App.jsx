@@ -357,7 +357,7 @@ const App = () => {
                 <span key={index} style={{ animationDelay: `${index * 0.04}s` }}>{letter}</span>
               ))}
             </h1>
-            <h2 className="hero-subtitle">Front End Developer & Data Scientist</h2>
+            <h2 className="hero-subtitle">Developer</h2>
             <div className="hero-buttons">
               <a href="#contact" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>
                 Get in Touch
@@ -414,9 +414,9 @@ const App = () => {
           <div className="premium-card tilt-effect">
             <div className="card-glare"></div>
             <h3>Higher Secondary Education</h3>
-            <h4>[Your School Name], [Location]</h4>
+            <h4>GHSS Kizhakkenchery, Palakkad</h4>
             <p>2020 - 2022</p>
-            <p>Completed higher secondary education with a focus on [Science/Commerce/Arts, specify stream].</p>
+            <p>Completed higher secondary education with a focus on Science</p>
           </div>
         </div>
       </section>
@@ -498,7 +498,72 @@ const App = () => {
           </div>
         </div>
       </section>
-
+{/* Certificates Section */}
+<section 
+  id="certificates" 
+  className={`section ${visibleSections.has('certificates') ? 'visible' : ''}`}
+>
+  <div className="container">
+    <h2 className="section-title">
+      <span className="title-decoration"></span>
+      Certificates
+      <span className="title-decoration"></span>
+    </h2>
+    <div className="certificates-grid">
+      {[
+        {
+          title: 'Front End Development with React',
+          issuer: 'Coursera',
+          image: '/certificate1.jpg',
+          alt: 'Front End Development Certificate',
+          link: 'https://www.coursera.org/account/accomplishments/certificate/XXXXXXX'
+        },
+        {
+          title: 'Flutter & Dart - The Complete Guide',
+          issuer: 'Udemy',
+          image: '/certificate2.jpg',
+          alt: 'Flutter Development Certificate',
+          link: 'https://www.udemy.com/certificate/XXXXXXX'
+        },
+        {
+          title: 'Data Science with Python',
+          issuer: 'IBM Skills Network',
+          image: '/certificate3.jpg',
+          alt: 'Data Science Certificate',
+          link: 'https://www.credly.com/badges/XXXXXXX'
+        }
+      ].map((certificate, index) => (
+        <div
+          key={index}
+          className={`certificate-card premium-card tilt-effect ${
+            visibleProjects.has(index) ? 'visible' : ''
+          }`}
+        >
+          <div className="card-glare"></div>
+          <img
+            src={certificate.image}
+            alt={certificate.alt}
+            className="certificate-image"
+          />
+          <div className="certificate-content">
+            <h3>{certificate.title}</h3>
+            <p>{certificate.issuer}</p>
+            <div className="certificate-link">
+              <a
+                href={certificate.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link magnetic"
+              >
+                View Certificate
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
       {/* Social Media Section */}
    
       {/* Projects Section */}
@@ -518,27 +583,27 @@ const App = () => {
               {
                 title: 'Movemark Attendance System',
                 desc: 'AI-based attendance system using facial recognition (TechPlus Hackathon 2nd Prize Winner)',
-                image: '/movemark.jpg',
+                image: 'public/Movemark.jpeg',
                 tech: ['Flutter', 'Python', 'TensorFlow'],
                 links: [
                   { url: 'https://github.com/Sreeshks/movemark-frontend', label: 'GitHub' },
                   { url: '#', label: 'Demo' }
                 ]
               },
-              {
-                title: 'Shopease',
-                desc: 'Smart product locator system helping users find products and their prices efficiently in stores',
-                image: '/shopease.jpg',
-                tech: ['React', 'Django', 'Computer Vision'],
-                links: [
-                  { url: 'https://github.com/Sreeshks/shopease', label: 'GitHub' },
-                  { url: '#', label: 'Demo' }
-                ]
-              },
+              // {
+              //   title: 'Shopease',
+              //   desc: 'Smart product locator system helping users find products and their prices efficiently in stores',
+              //   image: 'public/ShopEase.jpg',
+              //   tech: ['React', 'Django', 'Computer Vision'],
+              //   links: [
+              //     { url: 'https://github.com/Sreeshks/shopease', label: 'GitHub' },
+              //     { url: '#', label: 'Demo' }
+              //   ]
+              // },
               {
                 title: 'Deepfake Video Detection',
                 desc: 'Advanced AI system for detecting manipulated videos using deep learning techniques',
-                image: '/deepfake.jpg',
+                image: 'public/Deepfake.png',
                 tech: ['Python', 'TensorFlow', 'OpenCV'],
                 links: [
                   { url: 'https://github.com/Sreeshks/MTCNN-based-Deepfake-Detection', label: 'GitHub' },
@@ -548,7 +613,7 @@ const App = () => {
               {
                 title: 'DevExy - Project Visualizer',
                 desc: 'React/Vite based web app that generates structure diagrams from project zip files (HackeFX 3rd Prize Winner)',
-                image: '/devexy.jpg',
+                image: 'public/DevExy.png',
                 tech: ['React', 'Vite', 'D3.js'],
                 links: [
                   { url: 'https://github.com/Sreeshks/devexy', label: 'GitHub' },
