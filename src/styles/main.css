@@ -506,24 +506,66 @@ body::before {
 }
 
 .form-group {
+  position: relative;
   margin-bottom: 1.2rem;
 }
 
 .form-control {
   width: 100%;
-  padding: 0.6rem;
-  background: var(--color-secondary-light);
+  padding: 0.8rem;
+  background: rgba(30, 30, 30, 0.8);
   border: 1px solid rgba(138, 43, 226, 0.2);
   border-radius: 6px;
   color: var(--color-text);
-  font-size: 0.8rem; /* Reduced */
-  transition: var(--transition-normal);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .form-control:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-violet);
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.3);
+  background: rgba(30, 30, 30, 0.9);
+}
+
+.form-control::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.input-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.form-control:focus + .input-glow {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.3);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Ensure form controls are above the glow effect */
+.form-control {
+  position: relative;
+  z-index: 2;
+}
+
+/* Remove any pointer-events from decorative elements */
+.input-glow {
+  pointer-events: none;
 }
 
 /* Animations */
