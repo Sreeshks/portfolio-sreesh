@@ -534,37 +534,60 @@ With proficiency in Python programming, web development, and database management
           <div className="projects-grid">
             {[
               {
+                title: 'exAIma',
+                desc: 'AI-powered proctoring platform designed to secure exams anywhere, anytime',
+                image: '/exaima.jpg',
+                tech: ['React', 'AI', 'Vite'],
+                links: [
+                  { url: 'https://github.com/Sreeshks/exAIma_frontend', label: 'GitHub' }
+                ]
+              },
+              {
+                title: 'DrMail',
+                desc: 'Flutter app for sharing daily reports with AI-powered text import and EmailJS integration',
+                image: '/DrMail.jpg',
+                tech: ['Flutter', 'AI', 'EmailJS'],
+                links: [
+                  { url: 'https://drmail.vercel.app/', label: 'Demo' }
+                ]
+              },
+              {
                 title: 'Movemark Attendance System',
                 desc: 'AI-based attendance system using facial recognition (TechPlus Hackathon 2nd Prize Winner)',
                 image: '/Movemark.jpeg',
                 tech: ['Flutter', 'Python', 'TensorFlow'],
                 links: [
-                  { url: 'https://github.com/Sreeshks/movemark-frontend', label: 'GitHub' },
-                 
+                  { url: 'https://github.com/Sreeshks/movemark-frontend', label: 'GitHub' }
                 ]
               },
               {
                 title: 'Deepfake Video Detection',
                 desc: 'Advanced AI system for detecting manipulated videos using deep learning techniques',
                 image: '/Deepfake.png',
-                tech: ['Python', 'TensorFlow', 'OpenCV'],
+                tech: ['Python', 'TensorFlow', 'MadNet'],
                 links: [
-                  { url: 'https://github.com/Sreeshks/MTCNN-based-Deepfake-Detection', label: 'GitHub' },
-                  { url: '#', label: 'Research Paper' }
+                  { url: 'https://github.com/Sreeshks/', label: 'GitHub' }
                 ]
               },
               {
                 title: 'DevExy - Project Visualizer',
                 desc: 'React/Vite based web app that generates structure diagrams from project zip files (HackeFX 3rd Prize Winner)',
                 image: '/DevExy.png',
-                tech: ['React', 'Vite', 'D3.js'],
+                tech: ['React', 'Vite'],
                 links: [
-                  { url: 'https://github.com/Sreeshks/devexy', label: 'GitHub' },
-                 
+                  { url: 'https://github.com/Sreeshks/devexy', label: 'GitHub' }
                 ]
               }
             ].map((project, index) => (
-              <div key={index} className={`project-card premium-card tilt-effect ${visibleProjects.has(index) ? 'visible' : ''}`}>
+              <div 
+                key={index} 
+                className={`project-card premium-card tilt-effect ${visibleProjects.has(index) ? 'visible' : ''}`}
+                style={{ 
+                  opacity: 0, 
+                  transform: 'translateY(20px)', 
+                  animation: `fadeInUp 0.5s ease forwards ${index * 0.2}s` 
+                }}
+              >
                 <div className="card-glare"></div>
                 <img src={project.image} alt={project.title} className="project-image" />
                 <div className="project-content">
@@ -577,7 +600,15 @@ With proficiency in Python programming, web development, and database management
                   </div>
                   <div className="project-links">
                     {project.links.map(link => (
-                      <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="project-link magnetic">{link.label}</a>
+                      <a 
+                        key={link.label} 
+                        href={link.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="project-link magnetic"
+                      >
+                        {link.label}
+                      </a>
                     ))}
                   </div>
                 </div>
