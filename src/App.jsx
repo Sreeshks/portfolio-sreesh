@@ -746,15 +746,33 @@ With proficiency in Python programming, web development, and database management
               </div>
               <form className="contact-form" ref={formRef} onSubmit={sendEmail}>
                 <div className="form-group">
-                  <input type="text" name="user_name" className="form-control premium-input" placeholder="Name" required />
+                  <input 
+                    type="text" 
+                    name="user_name" 
+                    className="form-control premium-input" 
+                    placeholder="Name" 
+                    required 
+                  />
                   <div className="input-glow"></div>
                 </div>
                 <div className="form-group">
-                  <input type="email" name="user_email" className="form-control premium-input" placeholder="Email" required />
+                  <input 
+                    type="email" 
+                    name="user_email" 
+                    className="form-control premium-input" 
+                    placeholder="Email" 
+                    required 
+                  />
                   <div className="input-glow"></div>
                 </div>
                 <div className="form-group">
-                  <textarea name="message" className="form-control premium-input" placeholder="Message" rows="5" required></textarea>
+                  <textarea 
+                    name="message" 
+                    className="form-control premium-input" 
+                    placeholder="Message" 
+                    rows="5" 
+                    required
+                  ></textarea>
                   <div className="input-glow"></div>
                 </div>
                 <button type="submit" className="btn-premium magnetic">
