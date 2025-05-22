@@ -722,39 +722,62 @@ With proficiency in Python programming, web development, and database management
             <div className="hackathon-card premium-card tilt-effect">
               <div className="card-glare"></div>
               <div className="hackathon-content">
-                <h3>TechPulse Hackathon by UL Technology Solutions</h3>
+                <h3>The Great Bengaluru Hackathon 2025</h3>
                 <div className="hackathon-details">
                   <p className="hackathon-description">
-                    Team Porotta Pythoners secured 2nd place out of 160 teams and won the "Idea Ignitors" title 
-                    at the TechPulse Hackathon. We developed MoveMark, an innovative gait-based attendance system 
-                    for HR that uses AI-powered motion analysis to transform workplace attendance tracking.
+                    Achieved Top 10% placement among 4500+ registrations and 1199 idea submissions, 
+                    securing a spot in the Top 150 teams. Developed exAIma, an innovative AI-powered 
+                    proctoring platform that revolutionizes exam security and integrity.
                   </p>
                   <div className="hackathon-images">
-                    <img src="/techplus1.png" alt="TechPulse Hackathon 1" className="hackathon-image" />
-                    <img src="/tech.jpeg" alt="TechPulse Award" className="hackathon-image" />
-                    <img src="/Movemark.jpeg" alt="MoveMark Project" className="hackathon-image" />
+                    <img src="/bnglr1.png" alt="Bengaluru Hackathon 1" className="hackathon-image" />
+                    <img src="/bnglr2.png" alt="Bengaluru Hackathon 2" className="hackathon-image" />
                   </div>
                   <div className="hackathon-info">
-                    <div className="hackathon-project">
-                      <h4>Project: MoveMark</h4>
-                      <p>An AI-powered attendance system that revolutionizes workplace attendance tracking through:</p>
+                    <div className="hackathon-organizers">
+                      <h4>Organized by:</h4>
                       <ul>
-                        <li>Gait-based identification using AI motion analysis</li>
-                        <li>Automated attendance tracking</li>
-                        <li>Real-time monitoring and reporting</li>
-                        <li>Enhanced security and accuracy</li>
-                        <li>Seamless HR integration</li>
+                        <li>HackCulture</li>
+                        <li>Zysk Technologies</li>
+                        <li>RV College Of Engineering</li>
+                      </ul>
+                    </div>
+                    <div className="hackathon-team">
+                      <h4>Team Members:</h4>
+                      <ul>
+                        <li>Stebi A R</li>
+                        <li>Sreesh K Suresh</li>
+                      </ul>
+                    </div>
+                    <div className="hackathon-project">
+                      <h4>Project: exAIma</h4>
+                      <p>An AI-powered proctoring platform with features:</p>
+                      <ul>
+                        <li>Secure exam monitoring using AI</li>
+                        <li>Real-time proctoring capabilities</li>
+                        <li>Flexible exam scheduling</li>
+                        <li>Advanced security measures</li>
+                        <li>Comprehensive exam integrity tools</li>
                       </ul>
                     </div>
                   </div>
                   <div className="hackathon-links">
                     <a 
-                      href="https://lnkd.in/gx8W7uj8" 
+                      href="https://lnkd.in/gnStbb5t" 
                       className="hackathon-link magnetic" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
-                      View MoveMark Project <i className="fas fa-arrow-right"></i>
+                      View Frontend <i className="fas fa-arrow-right"></i>
+                      <div className="btn-glow"></div>
+                    </a>
+                    <a 
+                      href="https://lnkd.in/gkWiu8HC" 
+                      className="hackathon-link magnetic" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      View Backend <i className="fas fa-arrow-right"></i>
                       <div className="btn-glow"></div>
                     </a>
                   </div>
