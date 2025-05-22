@@ -404,7 +404,7 @@ With proficiency in Python programming, web development, and database management
           </h2>
           <div className="premium-card tilt-effect">
             <div className="card-glare"></div>
-            <h3>Flutter Developer Intern</h3>
+            <h3>Flutter Developer</h3>
             <h4>EQSOFT Business Solutions</h4>
             <p>Developed and maintained Flutter applications using Bloc pattern for state management, enhancing user experience and performance.</p>
           </div>
