@@ -707,6 +707,204 @@ With proficiency in Python programming, web development, and database management
         </div>
       </section>
 
+      {/* Hackathon Section */}
+      <section 
+        id="hackathons" 
+        className={`section ${visibleSections.has('hackathons') ? 'visible' : ''}`}
+      >
+        <div className="container">
+          <h2 className="section-title">
+            <span className="title-decoration"></span>
+            Hackathon Experiences
+            <span className="title-decoration"></span>
+          </h2>
+          <div className="hackathon-grid">
+            <div className="hackathon-card premium-card tilt-effect">
+              <div className="card-glare"></div>
+              <div className="hackathon-content">
+                <h3>TechPulse Hackathon by UL Technology Solutions</h3>
+                <div className="hackathon-details">
+                  <p className="hackathon-description">
+                    Team Porotta Pythoners secured 2nd place out of 160 teams and won the "Idea Ignitors" title 
+                    at the TechPulse Hackathon. We developed MoveMark, an innovative gait-based attendance system 
+                    for HR that uses AI-powered motion analysis to transform workplace attendance tracking.
+                  </p>
+                  <div className="hackathon-images">
+                    <img src="/techplus1.png" alt="TechPulse Hackathon 1" className="hackathon-image" />
+                    <img src="/tech.jpeg" alt="TechPulse Award" className="hackathon-image" />
+                    <img src="/Movemark.jpeg" alt="MoveMark Project" className="hackathon-image" />
+                  </div>
+                  <div className="hackathon-info">
+                    <div className="hackathon-project">
+                      <h4>Project: MoveMark</h4>
+                      <p>An AI-powered attendance system that revolutionizes workplace attendance tracking through:</p>
+                      <ul>
+                        <li>Gait-based identification using AI motion analysis</li>
+                        <li>Automated attendance tracking</li>
+                        <li>Real-time monitoring and reporting</li>
+                        <li>Enhanced security and accuracy</li>
+                        <li>Seamless HR integration</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="hackathon-links">
+                    <a 
+                      href="https://lnkd.in/gx8W7uj8" 
+                      className="hackathon-link magnetic" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      View MoveMark Project <i className="fas fa-arrow-right"></i>
+                      <div className="btn-glow"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="hackathon-card premium-card tilt-effect">
+              <div className="card-glare"></div>
+              <div className="hackathon-content">
+                <h3>PROXY CSE GECT Hackathon</h3>
+                <div className="hackathon-details">
+                  <p className="hackathon-description">
+                    Achieved 7th place out of 842 participants at PROXY CSE GECT, hosted in GEC Thrissur. 
+                    The three-day event featured multiple competitions including a 5-hour coding competition, 
+                    Capture The Flag (CTF) where we secured 5th place, and an 18-hour hackathon.
+                  </p>
+                  <div className="hackathon-images">
+                    <img src="/proxy1.png" alt="PROXY Hackathon 1" className="hackathon-image" />
+                    <img src="/proxy2.png" alt="PROXY Hackathon 2" className="hackathon-image" />
+                    <img src="/proxy3.png" alt="PROXY Hackathon 3" className="hackathon-image" />
+                    <img src="/proxy4.png" alt="PROXY Hackathon 4" className="hackathon-image" />
+                  </div>
+                  <div className="hackathon-info">
+                    <div className="hackathon-team">
+                      <h4>Team Members:</h4>
+                      <ul>
+                        <li>Eric Thimi</li>
+                        <li>Stebi A R</li>
+                        <li>Sreesh K Suresh</li>
+                      </ul>
+                    </div>
+                    <div className="hackathon-project">
+                      <h4>Project: CueHub</h4>
+                      <p>A powerful CLI tool designed to simplify developers' experiences with features like:</p>
+                      <ul>
+                        <li>Project Initialization with virtual environment setup</li>
+                        <li>Framework Setup (Django, Pyramid, FastAPI, Flask, Tornado)</li>
+                        <li>Project Analysis and improvement suggestions</li>
+                        <li>Documentation Generation</li>
+                        <li>Git memory snippets for quick access</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="hackathon-links">
+                    <a 
+                      href="https://lnkd.in/gqpkDUpK" 
+                      className="hackathon-link magnetic" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      View CueHub Project <i className="fas fa-arrow-right"></i>
+                      <div className="btn-glow"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="hackathon-card premium-card tilt-effect">
+              <div className="card-glare"></div>
+              <div className="hackathon-content">
+                <h3>CUSAT 24-Hour Hackathon</h3>
+                <div className="hackathon-details">
+                  <p className="hackathon-description">
+                    Participated in a high-energy 24-hour hackathon at CUSAT, selected from 300+ applicants. 
+                    Experienced an innovative technology selection process where teams bid on technologies using virtual currency.
+                  </p>
+                  <div className="hackathon-images">
+                    <img src="/cusat1.png" alt="CUSAT Hackathon 1" className="hackathon-image" />
+                    <img src="/cusat2.png" alt="CUSAT Hackathon 2" className="hackathon-image" />
+                    <img src="/cusat3.png" alt="CUSAT Hackathon 3" className="hackathon-image" />
+                    <img src="/cusat4.png" alt="CUSAT Hackathon 4" className="hackathon-image" />
+                  </div>
+                  <div className="hackathon-info">
+                    <div className="hackathon-organizers">
+                      <h4>Organized by:</h4>
+                      <ul>
+                        <li>ACES, CUSAT</li>
+                        <li>IEEE CUSAT SB</li>
+                        <li>Tinkerhub CUSAT</li>
+                        <li>Dhishna</li>
+                      </ul>
+                    </div>
+                    <div className="hackathon-team">
+                      <h4>Team Members:</h4>
+                      <ul>
+                        <li>Stebi A.R.</li>
+                        <li>Sreesh K Suresh</li>
+                        <li>Krishnendhu K</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="hackathon-links">
+                    <a 
+                      href="https://lnkd.in/grkCaMf6" 
+                      className="hackathon-link magnetic" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      View Project <i className="fas fa-arrow-right"></i>
+                      <div className="btn-glow"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="hackathon-card premium-card tilt-effect">
+              <div className="card-glare"></div>
+              <div className="hackathon-content">
+                <h3>Novathon Hackathon</h3>
+                <div className="hackathon-details">
+                  <p className="hackathon-description">
+                    Developed Atomica, an innovative habit tracking application that leverages LLMware's 
+                    advanced language models to analyze and predict user goals. The app combines Flutter's 
+                    powerful UI capabilities with AI-driven insights to help users build and maintain better habits.
+                  </p>
+                  <div className="hackathon-images">
+                    <img src="/novathon.heic" alt="Novathon Hackathon 1" className="hackathon-image" />
+                    <img src="/novathon2.HEIC" alt="Novathon Hackathon 2" className="hackathon-image" />
+                  </div>
+                  <div className="hackathon-info">
+                    <div className="hackathon-project">
+                      <h4>Project: Atomica</h4>
+                      <p>A smart habit tracking application with AI-powered features:</p>
+                      <ul>
+                        <li>Goal prediction using LLMware's language models</li>
+                        <li>Personalized habit recommendations</li>
+                        <li>Progress tracking and analytics</li>
+                        <li>Intuitive Flutter-based UI/UX</li>
+                        <li>Real-time habit insights and suggestions</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="hackathon-links">
+                    <a 
+                      href="https://github.com/Sreeshks" 
+                      className="hackathon-link magnetic" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      View Atomica Project <i className="fas fa-arrow-right"></i>
+                      <div className="btn-glow"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section 
         id="contact" 
