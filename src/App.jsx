@@ -534,6 +534,15 @@ With proficiency in Python programming, web development, and database management
           <div className="projects-grid">
             {[
               {
+                title: 'InsightPro',
+                desc: 'Flutter app for real-time business monitoring with live sales tracking, inventory management, and branch performance analytics',
+                image: '/InsightPro.jpg',
+                tech: ['Flutter', 'Bloc', 'Firebase'],
+                links: [
+                  { url: 'https://play.google.com/store/apps/details?id=com.eqsoftonline.live_app', label: 'Play Store' }
+                ]
+              },
+              {
                 title: 'exAIma',
                 desc: 'AI-powered proctoring platform designed to secure exams anywhere, anytime',
                 image: '/exaima.jpg',
