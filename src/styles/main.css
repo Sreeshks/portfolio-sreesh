@@ -2077,4 +2077,14 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.cgpa {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(138, 43, 226, 0.1);
+  border-radius: 4px;
+  display: inline-block;
 } 

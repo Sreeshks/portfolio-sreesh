@@ -428,6 +428,7 @@ With proficiency in Python programming, web development, and database management
             <h4>St. Thomas College, Thrissur</h4>
             <p>2022 - 2025</p>
             <p>Pursuing a Bachelor of Vocation in Data Science, focusing on statistical analysis, machine learning, and data visualization.</p>
+            <p className="cgpa">CGPA: 8.57</p>
           </div>
           <div className="premium-card tilt-effect">
             <div className="card-glare"></div>
