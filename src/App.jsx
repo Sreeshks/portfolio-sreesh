@@ -974,6 +974,85 @@ With proficiency in Python programming, web development, and database management
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section 
+        id="gallery" 
+        className={`section ${visibleSections.has('gallery') ? 'visible' : ''}`}
+      >
+        <div className="container">
+          <h2 className="section-title">
+            <span className="title-decoration"></span>
+            Gallery
+            <span className="title-decoration"></span>
+          </h2>
+          <div className="gallery-grid">
+            {/* Certificates */}
+            <div className="gallery-category">
+              <h3>Certificates</h3>
+              <div className="gallery-items">
+                {[
+                  { image: '/DataAnalystwithpython.png', title: 'Data Analyst with Python' },
+                  { image: '/flutter.png', title: 'Flutter Development' },
+                  { image: '/Git.png', title: 'Git & GitHub' },
+                  { image: '/digital_marketing.png', title: 'Digital Marketing' }
+                ].map((item, index) => (
+                  <div key={index} className="gallery-item">
+                    <img src={item.image} alt={item.title} />
+                    <div className="gallery-item-overlay">
+                      <h4>{item.title}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Awards */}
+            <div className="gallery-category">
+              <h3>Awards</h3>
+              <div className="gallery-items">
+                {[
+                  { image: '/tech.jpeg', title: 'TechPlus Hackathon - 2nd Prize' },
+                  { image: '/hackefx.jpeg', title: 'HakeFX Hackathon - 3rd Prize' }
+                ].map((item, index) => (
+                  <div key={index} className="gallery-item">
+                    <img src={item.image} alt={item.title} />
+                    <div className="gallery-item-overlay">
+                      <h4>{item.title}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Hackathons */}
+            <div className="gallery-category">
+              <h3>Hackathons</h3>
+              <div className="gallery-items">
+                {[
+                  { image: '/bnglr1.png', title: 'Bengaluru Hackathon' },
+                  { image: '/bnglr2.png', title: 'Bengaluru Hackathon' },
+                  { image: '/proxy1.png', title: 'PROXY CSE GECT' },
+                  { image: '/proxy2.png', title: 'PROXY CSE GECT' },
+                  { image: '/proxy3.png', title: 'PROXY CSE GECT' },
+                  { image: '/proxy4.png', title: 'PROXY CSE GECT' },
+                  { image: '/cusat1.png', title: 'CUSAT Hackathon' },
+                  { image: '/cusat2.png', title: 'CUSAT Hackathon' },
+                  { image: '/cusat3.png', title: 'CUSAT Hackathon' },
+                  { image: '/cusat4.png', title: 'CUSAT Hackathon' }
+                ].map((item, index) => (
+                  <div key={index} className="gallery-item">
+                    <img src={item.image} alt={item.title} />
+                    <div className="gallery-item-overlay">
+                      <h4>{item.title}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section 
         id="contact" 
