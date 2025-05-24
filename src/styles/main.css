@@ -580,17 +580,8 @@ textarea.form-control {
 }
 
 /* Navigation */
-.fixed-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 0.8rem 1.5rem;
-}
-
 .nav-content {
-  background: rgba(30, 30, 30, 0.8);
+  background: rgba(30, 30, 30, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(138, 43, 226, 0.1);
   padding: 0.8rem 1.5rem;
@@ -599,110 +590,93 @@ textarea.form-control {
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.nav-content:hover {
-  background: rgba(30, 30, 30, 0.9);
-  box-shadow: 0 4px 16px rgba(138, 43, 226, 0.2);
-}
-
-.nav-content a {
-  color: var(--color-text);
-  text-decoration: none;
-  padding: 0.4rem 1.2rem;
-  margin: 0 0.4rem;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  font-weight: 500;
-  font-size: 0.9rem; /* Reduced */
-}
-
-.nav-content a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.1), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.nav-content a:hover {
-  color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
-}
-
-.nav-content a:hover::before {
-  transform: translateX(100%);
-}
-
-.nav-content a.active {
-  background: rgba(138, 43, 226, 0.1);
-  color: var(--color-primary);
-  box-shadow: 0 0 12px rgba(138, 43, 226, 0.2);
-}
-
-.nav-content a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--color-primary);
-  transform: scaleX(1);
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-/* Enhanced Navigation */
-.enhanced-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(30, 30, 30, 0.9);
-  box-shadow: 0 4px 16px rgba(138, 43, 226, 0.3);
-  border-radius: 10px;
 }
 
-.enhanced-nav-link {
-  position: relative;
-  padding: 0.5rem 1.5rem;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
   font-size: 0.9rem;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
-.enhanced-nav-link:hover {
-  transform: scale(1.05);
-  color: var(--color-accent);
+.nav-link:hover {
+  background-color: rgba(138, 43, 226, 0.1);
 }
 
-.enhanced-nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
+.nav-link.active {
+  background-color: rgba(138, 43, 226, 0.2);
+  color: var(--color-primary);
+}
+
+/* Resume Buttons in Nav */
+.resume-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+  align-items: center;
+}
+
+.resume-preview-btn,
+.resume-download-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
   background: var(--color-primary);
-  transition: width 0.3s ease;
+  color: white;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
 }
 
-.enhanced-nav-link:hover::after,
-.enhanced-nav-link.active::after {
-  width: 50%;
+.resume-preview-btn:hover,
+.resume-download-btn:hover {
+  background-color: var(--color-primary-dark);
 }
 
-/* Smooth Scroll Behavior */
-html {
-  scroll-behavior: smooth;
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .nav-content {
+    padding: 0.6rem 1rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: var(--gradient-dark);
+    flex-direction: column;
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .resume-buttons {
+    flex-direction: column;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .resume-preview-btn,
+  .resume-download-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* Section Spacing for Navigation */
@@ -1341,7 +1315,7 @@ html {
 }
 
 .tech-tag {
-  background: rgba(138, 43, 226, 0.1);
+    background: rgba(138, 43, 226, 0.1);
   color: var(--color-primary);
   padding: 0.3rem 0.6rem;
   border-radius: 12px;
@@ -1374,10 +1348,10 @@ html {
 
 .btn-glow {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
@@ -1590,10 +1564,8 @@ html {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.4rem;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
+  padding: 0.5rem;
+  position: relative;
   z-index: 1001;
 }
 
@@ -1603,7 +1575,7 @@ html {
   height: 2px;
   background: var(--color-text);
   margin: 5px 0;
-  transition: var(--transition-normal);
+  transition: 0.3s ease;
 }
 
 .mobile-menu-btn.active span:nth-child(1) {
@@ -1616,6 +1588,56 @@ html {
 
 .mobile-menu-btn.active span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .nav-content {
+    padding: 0.6rem 1rem;
+    justify-content: flex-end;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: var(--gradient-dark);
+    flex-direction: column;
+    padding: 4rem 2rem 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 0.8rem 1rem;
+  }
+
+  .resume-buttons {
+    flex-direction: column;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .resume-preview-btn,
+  .resume-download-btn {
+    width: 100%;
+    text-align: left;
+  }
 }
 
 /* Nav Overlay */
@@ -1806,7 +1828,7 @@ html {
 
 /* Additional Responsive Adjustments */
 @media (max-width: 768px) {
-  .social-profiles {
+.social-profiles {
     grid-template-columns: 1fr;
   }
 
@@ -1815,9 +1837,9 @@ html {
     padding: 1.2rem;
   }
 
-  .profile-photo-large {
+.profile-photo-large {
     width: 160px; /* Reduced from 200px */
-    height: 160px;
+  height: 160px;
   }
 
   .code-editor-container {
@@ -2004,7 +2026,7 @@ html {
   }
 
   .certificate-content h3 {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
   }
 
   .certificate-content p {
@@ -2127,7 +2149,7 @@ html {
 }
 
 .hackathon-image {
-  width: 100%;
+    width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
@@ -2260,4 +2282,106 @@ html {
   color: var(--color-primary);
   position: absolute;
   left: 0;
+}
+
+/* Resume Modal Styles */
+.resume-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.resume-modal-content {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.resume-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: transform 0.2s ease;
+}
+
+.resume-modal-close:hover {
+  transform: scale(1.1);
+}
+
+.resume-preview {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Navigation Resume Buttons */
+.resume-buttons {
+  display: flex;
+  gap: 15px;
+  margin-left: 20px;
+}
+
+.resume-preview-btn,
+.resume-download-btn {
+  padding: 8px 15px;
+  border-radius: 8px;
+  background: var(--accent-color);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.resume-preview-btn:hover,
+.resume-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .resume-buttons {
+    flex-direction: column;
+    margin: 10px 0;
+    gap: 10px;
+  }
+
+  .resume-modal-content {
+    width: 95%;
+    height: 95%;
+  }
 } 

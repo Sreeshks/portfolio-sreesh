@@ -12,6 +12,7 @@ const App = () => {
   const [visibleSections, setVisibleSections] = useState(new Set());
   const [visibleProjects, setVisibleProjects] = useState(new Set());
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   
   // Refs for parallax effects and form
   const heroRef = useRef(null);
@@ -33,8 +34,12 @@ const App = () => {
 
   // Scroll handling with smooth visibility animations
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const sections = ['home', 'experience', 'education', 'awards', 'skills', 'social', 'projects', 'contact'];
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sections = ['home', 'experience', 'education', 'awards', 'skills', 'social', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       // Update active section
@@ -64,7 +69,7 @@ const App = () => {
         }
       });
 
-      // Handle project visibility with staggered animations
+          // Handle project visibility with staggered animations
       const projectElements = document.querySelectorAll('.project-card');
       projectElements.forEach((project, index) => {
         const rect = project.getBoundingClientRect();
@@ -77,22 +82,28 @@ const App = () => {
               newSet.add(index);
               return newSet;
             });
-          }, index * 150);
-        }
-      });
-      
-      // Parallax effects
-      if (heroRef.current) {
-        const scrollY = window.scrollY;
-        const heroElements = heroRef.current.querySelectorAll('.parallax');
-        heroElements.forEach((el, index) => {
-          const speed = el.dataset.speed || 0.08;
-          el.style.transform = `translateY(${scrollY * speed * (index + 1)}px)`;
+              }, index * 150);
+            }
+          });
+          
+          // Parallax effects
+          if (heroRef.current) {
+            const scrollY = window.scrollY;
+            const heroElements = heroRef.current.querySelectorAll('.parallax');
+            heroElements.forEach((el, index) => {
+              const speed = el.dataset.speed || 0.08;
+              el.style.transform = `translateY(${scrollY * speed * (index + 1)}px)`;
+            });
+          }
+
+          ticking = false;
         });
+
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -111,52 +122,16 @@ const App = () => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       
-      const hoverElement = document.elementsFromPoint(e.clientX, e.clientY)
-        .find(el => el.classList.contains('magnetic'));
-      
-      if (hoverElement) {
-        const rect = hoverElement.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const distX = e.clientX - centerX;
-        const distY = e.clientY - centerY;
-        const pull = 0.25;
-        
-        setTimeout(() => {
-          setFollowerPosition({ 
-            x: e.clientX - distX * pull, 
-            y: e.clientY - distY * pull 
-          });
-        }, 40);
-        
-        hoverElement.style.transform = `translate(${distX * 0.08}px, ${distY * 0.08}px)`;
-      } else {
-        setTimeout(() => {
-          setFollowerPosition({ x: e.clientX, y: e.clientY });
-        }, 40);
-        
-        document.querySelectorAll('.magnetic').forEach(el => {
-          el.style.transform = 'translate(0, 0)';
-        });
-      }
-    };
-
-    const handleMouseDown = () => {
-      document.querySelector('.cursor-follower').classList.add('clicked');
-    };
-    
-    const handleMouseUp = () => {
-      document.querySelector('.cursor-follower').classList.remove('clicked');
+      // Simplified cursor movement for better performance
+      requestAnimationFrame(() => {
+        setFollowerPosition({ x: e.clientX, y: e.clientY });
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
@@ -205,15 +180,34 @@ const App = () => {
     };
   }, [visibleSections, visibleProjects]);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : 'auto';
+  // Optimized navigation handling with touch support
+  const handleNavClick = (sectionId, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      setActiveSection(sectionId);
+      setIsMobileMenuOpen(false);
+      document.body.style.overflow = 'auto';
+    }
   };
 
-  const handleNavClick = (sectionId) => {
-    scrollToSection(sectionId);
-    setIsMobileMenuOpen(false);
-    document.body.style.overflow = 'auto';
+  // Touch-friendly mobile menu toggle
+  const toggleMobileMenu = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsMobileMenuOpen(prev => !prev);
+    document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : 'auto';
   };
 
   // EmailJS form submission handler
@@ -234,6 +228,20 @@ const App = () => {
       );
   };
 
+  const handleResumePreview = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsResumeModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeResumeModal = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsResumeModalOpen(false);
+    document.body.style.overflow = 'auto';
+  };
+
   if (isLoading) {
     return <LoadingScreen onLoaded={() => setIsLoading(false)} />;
   }
@@ -248,14 +256,18 @@ const App = () => {
         className="cursor" 
         style={{ 
           left: `${mousePosition.x}px`, 
-          top: `${mousePosition.y}px` 
+          top: `${mousePosition.y}px`,
+          transform: 'translate(-50%, -50%)',
+          transition: 'transform 0.1s ease-out'
         }} 
       />
       <div 
         className="cursor-follower" 
         style={{ 
           left: `${followerPosition.x}px`, 
-          top: `${followerPosition.y}px` 
+          top: `${followerPosition.y}px`,
+          transform: 'translate(-50%, -50%)',
+          transition: 'transform 0.15s ease-out'
         }} 
       />
 
@@ -281,11 +293,28 @@ const App = () => {
       {/* Gradient Background */}
       <div className="animated-gradient-bg"></div>
 
+      {/* Resume Preview Modal */}
+      {isResumeModalOpen && (
+        <div className="resume-modal-overlay" onClick={closeResumeModal}>
+          <div className="resume-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="resume-modal-close" onClick={closeResumeModal}>
+              <span>×</span>
+            </button>
+            <iframe 
+              src="/SREESH_K_SURESH_RESUME.pdf" 
+              className="resume-preview"
+              title="Resume Preview"
+            />
+          </div>
+        </div>
+      )}
+
       {/* Enhanced Navigation */}
       <nav className="nav-content enhanced-nav">
         <button 
           className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={toggleMobileMenu}
+          onTouchEnd={toggleMobileMenu}
           aria-label="Toggle menu"
         >
           <span></span>
@@ -293,27 +322,47 @@ const App = () => {
           <span></span>
         </button>
         
-        <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          {['home', 'experience', 'education', 'awards', 'skills', 'projects','certificates', 'contact'].map(section => (
+        <div 
+          className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {['home', 'experience', 'education', 'awards', 'skills', 'projects', 'certificates', 'contact'].map(section => (
             <a 
               key={section}
               href={`#${section}`} 
-              className={`nav-link magnetic enhanced-nav-link ${activeSection === section ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(section);
-              }}
+              className={`nav-link ${activeSection === section ? 'active' : ''}`}
+              onClick={(e) => handleNavClick(section, e)}
+              onTouchEnd={(e) => handleNavClick(section, e)}
             >
               <span className="nav-text">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
-              <span className="nav-hover-effect"></span>
             </a>
           ))}
+          <div className="resume-buttons">
+            <a 
+              href="#" 
+              className="nav-link resume-preview-btn"
+              onClick={handleResumePreview}
+              onTouchEnd={handleResumePreview}
+            >
+              <span className="nav-text">View Resume</span>
+            </a>
+            <a 
+              href="/SREESH_K_SURESH_RESUME.pdf" 
+              className="nav-link resume-download-btn"
+              target="_blank" 
+              rel="noopener noreferrer"
+              download
+            >
+              <span className="nav-text">Download Resume</span>
+            </a>
+          </div>
         </div>
         
         {isMobileMenuOpen && (
           <div 
             className="nav-overlay active"
             onClick={toggleMobileMenu}
+            onTouchEnd={toggleMobileMenu}
           />
         )}
       </nav>
@@ -325,66 +374,63 @@ const App = () => {
         ref={heroRef}
       >
         <div className="container">
-          <div className="hero-content">
+        <div className="hero-content">
             <div className="hero-flex-container parallax" data-speed="0.1">
-              <div className="profile-section">
-                <div className="profile-photo float-animation">
-                  <img src="/sree (1).png" alt="Sreesh K Suresh" />
-                </div>
+            <div className="profile-section">
+              <div className="profile-photo float-animation">
+                <img src="/sree (1).png" alt="Sreesh K Suresh" />
               </div>
-              <div className="code-editor-container">
-                <div className="editor-header">
-                  <div className="window-controls">
-                    <span className="control close"></span>
-                    <span className="control minimize"></span>
-                    <span className="control maximize"></span>
-                  </div>
-                  <div className="tab">about.tsx</div>
+            </div>
+            <div className="code-editor-container">
+              <div className="editor-header">
+                <div className="window-controls">
+                  <span className="control close"></span>
+                  <span className="control minimize"></span>
+                  <span className="control maximize"></span>
                 </div>
-                <div className="editor-content">
-                  <div className="line-numbers">
-                    {Array.from({ length: 6 }, (_, i) => (
-                      <span key={i}>{i + 1}</span>
-                    ))}
-                  </div>
-                  <div className="code-content">
-                    <div className="typing-effect">
-                      <span className="code-keyword">const</span>
-                      <span className="code-variable"> AboutMe</span>
-                      <span className="code-operator"> = </span>
-                      <span className="code-keyword">{`() => `}</span>
-                      <span className="code-operator">{'{'}</span>
-                      <br />
-                      <span className="code-return">  return (</span>
-                      <br />
+                <div className="tab">about.tsx</div>
+              </div>
+              <div className="editor-content">
+                <div className="line-numbers">
+                  {Array.from({ length: 6 }, (_, i) => (
+                    <span key={i}>{i + 1}</span>
+                  ))}
+                </div>
+                <div className="code-content">
+                  <div className="typing-effect">
+                    <span className="code-keyword">const</span>
+                    <span className="code-variable"> AboutMe</span>
+                    <span className="code-operator"> = </span>
+                    <span className="code-keyword">{`() => `}</span>
+                    <span className="code-operator">{'{'}</span>
+                    <br />
+                    <span className="code-return">  return (</span>
+                    <br />
                       <span className="code-text">    "I am a Flutter developer with a strong foundation in Data Science, having completed my degree from St. Thomas College. My expertise lies in mobile application development, UI/UX design, and data analysis. I specialize in building high-performance business applications using Flutter and have hands-on experience integrating AI-driven solutions.
 
 With proficiency in Python programming, web development, and database management, I bring a versatile skill set to every project. My passion lies in creating intuitive, user-friendly digital experiences and solving real-world problems with the power of data and technology.
 
 </span>
-                      <br />
-                      <span className="code-return">  );</span>
-                      <span className="code-operator">{'}'}</span>
-                    </div>
+                    <br />
+                    <span className="code-return">  );</span>
+                    <span className="code-operator">{'}'}</span>
                   </div>
                 </div>
               </div>
             </div>
-            <h1 className="hero-title">
-              {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
+          </div>
+          <h1 className="hero-title">
+            {['S', 'r', 'e', 'e', 's', 'h', ' ', 'K', ' ', 'S', 'u', 'r', 'e', 's', 'h'].map((letter, index) => (
                 <span key={index} style={{ animationDelay: `${index * 0.04}s` }}>{letter}</span>
-              ))}
-            </h1>
+            ))}
+          </h1>
             <h2 className="hero-subtitle">Developer</h2>
-            <div className="hero-buttons">
+          <div className="hero-buttons">
               <a href="#contact" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>
                 Get in Touch
               </a>
               <a href="#projects" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>
                 View Projects
-              </a>
-              <a href="/SREESH_K_SURESH_RESUME.pdf" className="btn-premium resume-btn magnetic" target="_blank" rel="noopener noreferrer">
-                Download Resume
               </a>
             </div>
           </div>
@@ -468,12 +514,12 @@ With proficiency in Python programming, web development, and database management
             ].map((award, index) => (
               <div key={index} className="award-card premium-card tilt-effect">
                 <div className="card-glare"></div>
-                <div className="award-content">
+              <div className="award-content">
                   <h3>{award.title}</h3>
                   <p>{award.description}</p>
-                  <div className="award-image">
+                <div className="award-image">
                     <img src={award.image} alt={award.alt} />
-                  </div>
+            </div>
                 </div>
               </div>
             ))}
@@ -704,7 +750,7 @@ With proficiency in Python programming, web development, and database management
               <div className="btn-glow"></div>
             </a>
           </div>
-        </div>
+                </div>
       </section>
 
       {/* Hackathon Section */}
@@ -741,14 +787,14 @@ With proficiency in Python programming, web development, and database management
                         <li>Zysk Technologies</li>
                         <li>RV College Of Engineering</li>
                       </ul>
-                    </div>
+                </div>
                     <div className="hackathon-team">
                       <h4>Team Members:</h4>
                       <ul>
                         <li>Stebi A R</li>
                         <li>Sreesh K Suresh</li>
                       </ul>
-                    </div>
+                      </div>
                     <div className="hackathon-project">
                       <h4>Project: exAIma</h4>
                       <p>An AI-powered proctoring platform with features:</p>
@@ -799,7 +845,7 @@ With proficiency in Python programming, web development, and database management
                     <img src="/proxy2.png" alt="PROXY Hackathon 2" className="hackathon-image" />
                     <img src="/proxy3.png" alt="PROXY Hackathon 3" className="hackathon-image" />
                     <img src="/proxy4.png" alt="PROXY Hackathon 4" className="hackathon-image" />
-                  </div>
+                </div>
                   <div className="hackathon-info">
                     <div className="hackathon-team">
                       <h4>Team Members:</h4>
@@ -808,7 +854,7 @@ With proficiency in Python programming, web development, and database management
                         <li>Stebi A R</li>
                         <li>Sreesh K Suresh</li>
                       </ul>
-                    </div>
+                </div>
                     <div className="hackathon-project">
                       <h4>Project: CueHub</h4>
                       <p>A powerful CLI tool designed to simplify developers' experiences with features like:</p>
@@ -819,8 +865,8 @@ With proficiency in Python programming, web development, and database management
                         <li>Documentation Generation</li>
                         <li>Git memory snippets for quick access</li>
                       </ul>
-                    </div>
-                  </div>
+                </div>
+              </div>
                   <div className="hackathon-links">
                     <a 
                       href="https://lnkd.in/gqpkDUpK" 
@@ -831,10 +877,10 @@ With proficiency in Python programming, web development, and database management
                       View CueHub Project <i className="fas fa-arrow-right"></i>
                       <div className="btn-glow"></div>
                     </a>
-                  </div>
+                </div>
                 </div>
               </div>
-            </div>
+                    </div>
             <div className="hackathon-card premium-card tilt-effect">
               <div className="card-glare"></div>
               <div className="hackathon-content">
@@ -878,11 +924,11 @@ With proficiency in Python programming, web development, and database management
                     >
                       View Project <i className="fas fa-arrow-right"></i>
                       <div className="btn-glow"></div>
-                    </a>
-                  </div>
-                </div>
+                </a>
               </div>
             </div>
+          </div>
+        </div>
             <div className="hackathon-card premium-card tilt-effect">
               <div className="card-glare"></div>
               <div className="hackathon-content">
@@ -896,7 +942,7 @@ With proficiency in Python programming, web development, and database management
                   <div className="hackathon-images">
                     <img src="/novathon.heic" alt="Novathon Hackathon 1" className="hackathon-image" />
                     <img src="/novathon2.HEIC" alt="Novathon Hackathon 2" className="hackathon-image" />
-                  </div>
+              </div>
                   <div className="hackathon-info">
                     <div className="hackathon-project">
                       <h4>Project: Atomica</h4>
@@ -908,8 +954,8 @@ With proficiency in Python programming, web development, and database management
                         <li>Intuitive Flutter-based UI/UX</li>
                         <li>Real-time habit insights and suggestions</li>
                       </ul>
-                    </div>
-                  </div>
+              </div>
+            </div>
                   <div className="hackathon-links">
                     <a 
                       href="https://github.com/Sreeshks" 
@@ -920,8 +966,8 @@ With proficiency in Python programming, web development, and database management
                       View Atomica Project <i className="fas fa-arrow-right"></i>
                       <div className="btn-glow"></div>
                     </a>
-                  </div>
-                </div>
+              </div>
+            </div>
               </div>
             </div>
           </div>
@@ -942,7 +988,7 @@ With proficiency in Python programming, web development, and database management
           <div className="premium-card contact-card tilt-effect">
             <div className="card-glare"></div>
             <div className="contact-content">
-              <div className="contact-info">
+            <div className="contact-info">
                 <div className="contact-item">
                   <div className="contact-icon">✉️</div>
                   <p>sreeshksureshh@gmail.com</p>
@@ -976,7 +1022,7 @@ With proficiency in Python programming, web development, and database management
                 </div>
               </div>
               <form className="contact-form" ref={formRef} onSubmit={sendEmail}>
-                <div className="form-group">
+              <div className="form-group">
                   <input 
                     type="text" 
                     name="user_name" 
@@ -985,8 +1031,8 @@ With proficiency in Python programming, web development, and database management
                     required 
                   />
                   <div className="input-glow"></div>
-                </div>
-                <div className="form-group">
+              </div>
+              <div className="form-group">
                   <input 
                     type="email" 
                     name="user_email" 
@@ -995,8 +1041,8 @@ With proficiency in Python programming, web development, and database management
                     required 
                   />
                   <div className="input-glow"></div>
-                </div>
-                <div className="form-group">
+              </div>
+              <div className="form-group">
                   <textarea 
                     name="message" 
                     className="form-control premium-input" 
@@ -1005,12 +1051,12 @@ With proficiency in Python programming, web development, and database management
                     required
                   ></textarea>
                   <div className="input-glow"></div>
-                </div>
+              </div>
                 <button type="submit" className="btn-premium magnetic">
                   <span>Send Message</span>
                   <div className="btn-glow"></div>
                 </button>
-              </form>
+            </form>
             </div>
           </div>
         </div>
