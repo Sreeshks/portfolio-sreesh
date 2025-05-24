@@ -398,7 +398,7 @@ body::before {
 
 /* Custom Cursor */
 .cursor {
-  width: 16px; /* Reduced from 20px */
+  width: 16px;
   height: 16px;
   border: 2px solid var(--color-primary);
   border-radius: 50%;
@@ -410,7 +410,7 @@ body::before {
 }
 
 .cursor-follower {
-  width: 8px; /* Reduced from 10px */
+  width: 8px;
   height: 8px;
   background: var(--color-primary);
   border-radius: 50%;
@@ -419,6 +419,31 @@ body::before {
   z-index: 9998;
   transition: transform 0.2s ease;
   box-shadow: 0 0 12px var(--color-primary);
+}
+
+/* Disable custom cursor on mobile devices */
+@media (max-width: 768px) {
+  .cursor,
+  .cursor-follower {
+    display: none;
+  }
+
+  /* Reset cursor styles for interactive elements on mobile */
+  .interactive,
+  .nav-link,
+  .btn-premium,
+  .social-link,
+  .project-link,
+  .hackathon-link,
+  .resume-preview-btn,
+  .resume-download-btn {
+    cursor: default;
+  }
+
+  /* Remove magnetic effect on mobile */
+  .magnetic {
+    transform: none !important;
+  }
 }
 
 /* Interactive Elements */
