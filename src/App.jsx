@@ -429,9 +429,9 @@ With proficiency in Python programming, web development, and database management
               <a href="#contact" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>
                 Get in Touch
               </a>
-              <a href="#projects" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>
+              {/* <a href="#projects" className="btn-premium magnetic" onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>
                 View Projects
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -459,32 +459,39 @@ With proficiency in Python programming, web development, and database management
 
       {/* Education Section */}
       <section 
-        id="education" 
-        className={`section ${visibleSections.has('education') ? 'visible' : ''}`}
-      >
-        <div className="container">
-          <h2 className="section-title">
-            <span className="title-decoration"></span>
-            Education
-            <span className="title-decoration"></span>
-          </h2>
-          <div className="premium-card tilt-effect">
-            <div className="card-glare"></div>
-            <h3>B.Voc Data Science</h3>
-            <h4>St. Thomas College, Thrissur</h4>
-            <p>2022 - 2025</p>
-            <p>Pursuing a Bachelor of Vocation in Data Science, focusing on statistical analysis, machine learning, and data visualization.</p>
-            <p className="cgpa">CGPA: 8.57</p>
-          </div>
-          <div className="premium-card tilt-effect">
-            <div className="card-glare"></div>
-            <h3>Higher Secondary Education</h3>
-            <h4>GHSS Kizhakkenchery, Palakkad</h4>
-            <p>2020 - 2022</p>
-            <p>Completed higher secondary education with a focus on Science</p>
-          </div>
-        </div>
-      </section>
+  id="education" 
+  className={`section ${visibleSections.has('education') ? 'visible' : ''}`}
+>
+  <div className="container">
+    <h2 className="section-title">
+      <span className="title-decoration"></span>
+      Education
+      <span className="title-decoration"></span>
+    </h2>
+    
+    <div className="premium-card tilt-effect">
+      <div className="card-glare"></div>
+      <h3>B.Voc Data Science</h3>
+      <h4>St. Thomas College, Thrissur</h4>
+      <p>2022 - 2025</p>
+      <p>Pursuing a Bachelor of Vocation in Data Science, focusing on statistical analysis, machine learning, and data visualization.</p>
+      <p className="cgpa">CGPA: 8.57</p>
+    </div>
+
+    {/* Spacer of height 5px */}
+    <div style={{ height: '20px' }}></div>
+    {/* or <div className="h-5"></div> if using Tailwind */}
+
+    <div className="premium-card tilt-effect">
+      <div className="card-glare"></div>
+      <h3>Higher Secondary Education</h3>
+      <h4>GHSS Kizhakkenchery, Palakkad</h4>
+      <p>2020 - 2022</p>
+      <p>Completed higher secondary education with a focus on Science</p>
+    </div>
+  </div>
+</section>
+
 
       {/* Awards Section */}
       <section 
