@@ -1153,20 +1153,7 @@ With proficiency in Python programming, web development, and database management
         <div className="container">
           <div className="footer-content">
             <p>© 2025 Sreesh K Suresh. All rights reserved.</p>
-            <div className="footer-links">
-              {['home', 'experience', 'education', 'awards', 'skills', 'social', 'projects', 'contact'].map(section => (
-                <a 
-                  key={section}
-                  href={`#${section}`} 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(section);
-                  }}
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </a>
-              ))}
-            </div>
+            
           </div>
         </div>
       </footer>
